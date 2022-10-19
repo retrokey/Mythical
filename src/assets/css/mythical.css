@@ -199,9 +199,6 @@ html, body {
     display: block;
     height: 69.5%;
     position: relative;
-    -webkit-transition: opacity .2s;
-    transition: opacity .2s;
-    margin: 0 0 20px 0;
 }
 
 .staff-box:hover {

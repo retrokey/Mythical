@@ -19,10 +19,18 @@ export const NavView: FC<{  }> = props => {
             });
         }
 
+        if (page == 'settings') {
+            changePage('settings');
+        }
+
         if (page == 'staff') {
             setStaff().then(() => {
                 changePage('staff');
             })
+        }
+
+        if (page == 'news') {
+            changePage('news');
         }
     }, [ setProfile, getSession, changePage ]);
 
@@ -32,6 +40,7 @@ export const NavView: FC<{  }> = props => {
     }, [  ]);
 
     const logout = useCallback(() => {
+        changePage('');
         removeSession();
     }, [ removeSession ]);
 
