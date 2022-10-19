@@ -11,7 +11,7 @@ export const StaffView: FC<{  }> = props => {
     const { setProfile } = ProfileHooks();
 
     useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Lista Staff';
+        document.title = configManager.config.mythical.name + ' - Staff List';
     }, [  ]);
 
     const showProfile = useCallback((username: string) => {
@@ -25,7 +25,7 @@ export const StaffView: FC<{  }> = props => {
         let items: Array<ReactElement> = new Array<ReactElement>();
 
         if (getStaff().fou.length == 0) {
-            items.push(<p key="no-mod">Non ci sono moderatori!</p>);
+            items.push(<p key="no-mod">We doesn't have founders!</p>);
         } else {
             for (let [index, staffer] of getStaff().fou.entries()) {
                 let status: string = staffer.status == '0' ? 'offline' : 'online';
@@ -55,7 +55,7 @@ export const StaffView: FC<{  }> = props => {
         let items: Array<ReactElement> = new Array<ReactElement>();
 
         if (getStaff().adm.length == 0) {
-            items.push(<p key="no-mod">Non ci sono moderatori!</p>);
+            items.push(<p key="no-mod">We doesn't have administrators!</p>);
         } else {
             for (let [index, staffer] of getStaff().adm.entries()) {
                 let status: string = staffer.status == '0' ? 'offline' : 'online';
@@ -85,7 +85,7 @@ export const StaffView: FC<{  }> = props => {
         let items: Array<ReactElement> = new Array<ReactElement>();
 
         if (getStaff().mod.length == 0) {
-            items.push(<p key="no-mod">Non ci sono moderatori!</p>);
+            items.push(<p key="no-mod">We doesn't have moderators!</p>);
         } else {
             for (let [index, staffer] of getStaff().mod.entries()) {
                 let status: string = staffer.status == '0' ? 'offline' : 'online';
@@ -115,18 +115,18 @@ export const StaffView: FC<{  }> = props => {
         <div className="d-flex justify-content-center">
             <div id="box">
                 <div className="header">
-                    Lista Staff
+                    Staff List
                 </div>
                 <div className="content">
-                    <div id="section_name">FONDATORI</div>
+                    <div id="section_name">FOUNDERS</div>
                     <div className="row">
                         { fou }
                     </div>
-                    <div id="section_name">AMMINISTRATORI</div>
+                    <div id="section_name">ADMINISTRATORS</div>
                     <div className="row">
                         { adm }
                     </div>
-                    <div id="section_name">MODERATORI</div>
+                    <div id="section_name">MODERATORS</div>
                     <div className="row">
                         { mod }
                     </div>

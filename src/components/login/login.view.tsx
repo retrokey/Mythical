@@ -12,7 +12,7 @@ export const LoginView: FC<{  }> = props => {
     const password = useRef<HTMLInputElement>();
 
     useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Benvenuto';
+        document.title = configManager.config.mythical.name + ' - Welcome';
     }, [  ]);
 
     const requestLogin = useCallback(async (user: string, psw: string) => {
@@ -53,10 +53,10 @@ export const LoginView: FC<{  }> = props => {
         <div className="d-flex justify-content-center">
             <div id="box">
                 <div className="header">
-                    Benvenuto
+                    Welcome
                 </div>
                 <div className="content">
-                    <div className="section_name">Entra</div>
+                    <div className="section_name">Enter</div>
                     <div className="row">
                         <div className="col-6">
                             <input ref={ username } type="text" placeholder="Username" />

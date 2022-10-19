@@ -14,15 +14,13 @@ export const NavView: FC<{  }> = props => {
  
     const setPage = useCallback((page: string) => {
         if (page == 'profile') {
-            setProfile(getSession().userInfo.username)
-            .then(() => {
+            setProfile(getSession().userInfo.username).then(() => {
                 changePage('profile');
             });
         }
 
         if (page == 'staff') {
-            setStaff()
-            .then(() => {
+            setStaff().then(() => {
                 changePage('staff');
             })
         }

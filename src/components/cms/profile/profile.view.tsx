@@ -7,7 +7,7 @@ export const ProfileView: FC<{  }> = props => {
     const { getProfile } = ProfileHooks();
 
     useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Profilo di ' + getUser().userInfo.username;
+        document.title = configManager.config.mythical.name + ' - Profile of ' + getUser().userInfo.username;
     }, [  ]);
 
     const getUser = useCallback(() => {
@@ -22,7 +22,7 @@ export const ProfileView: FC<{  }> = props => {
         <div className="d-flex justify-content-center">
             <div id="box">
                 <div className="header">
-                    { 'Profilo di ' + getUser().userInfo.username }
+                    { 'Profile of ' + getUser().userInfo.username }
                 </div>
                 <div className="content">
                     <div className="row">
