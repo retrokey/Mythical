@@ -58,7 +58,7 @@ export const ProfileView: FC<{  }> = props => {
                                 </div>
                             </div>
                             <div className="memberSince">
-                                Membro della community dal <b>{ getUser().registration }</b>!
+                                Community member from <b>{ getUser().registration }</b>!
                             </div>
                         </div>
                     </div>
