@@ -11,7 +11,7 @@ export class PermissionManager {
         });
 
         if (response.status != 'success') {
-            return false;
+            return;
         }
 
         let session: UserSessionDefinition = Store.getState().session;
