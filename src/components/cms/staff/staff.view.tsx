@@ -1,4 +1,4 @@
-import { FC, ReactElement, useCallback, useEffect, useMemo } from 'react';
+import { FC, ReactElement, useCallback, useMemo } from 'react';
 import { ConfigManager } from '../../../core/config/config.manager';
 import { PageHooks } from '../../../core/hooks/page.hooks';
 import { ProfileHooks } from '../../../core/hooks/profile.hooks';
@@ -10,14 +10,10 @@ export const StaffView: FC<{  }> = props => {
     const { changePage } = PageHooks();
     const { setProfile } = ProfileHooks();
 
-    useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Staff List';
-    }, [  ]);
-
     const showProfile = useCallback((username: string) => {
         setProfile(username)
         .then(() => {
-            changePage('profile');
+            changePage('profile', 'Profile of ' + username);
         });
     }, [ setProfile, changePage ]);
 

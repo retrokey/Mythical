@@ -7,7 +7,7 @@ import { StaffHooks } from '../../../core/hooks/staff.hooks';
 
 export const NavView: FC<{  }> = props => {
     const configManager: ConfigManager = new ConfigManager();
-    const { changePage } = PageHooks();
+    const { changePage, setNitro, clearPage } = PageHooks();
     const { removeSession, getSession } = SessionHooks();
     const { setProfile } = ProfileHooks();
     const { setStaff } = StaffHooks();
@@ -15,34 +15,33 @@ export const NavView: FC<{  }> = props => {
     const setPage = useCallback((page: string) => {
         if (page == 'profile') {
             setProfile(getSession().userInfo.username).then(() => {
-                changePage('profile');
+                changePage('profile', 'Profile of ' + getSession().userInfo.username);
             });
         }
 
         if (page == 'settings') {
-            changePage('settings');
+            changePage('settings', 'Settings');
         }
 
         if (page == 'staff') {
             setStaff().then(() => {
-                changePage('staff');
+                changePage('staff', 'Staff List');
             })
         }
 
         if (page == 'news') {
-            changePage('news');
+            changePage('news', 'News Archive');
         }
     }, [ setProfile, getSession, changePage ]);
 
-    const closePage = useCallback(() => {
-        document.title = configManager.config.mythical.name + ' - Nitro';
-        changePage('');
-    }, [  ]);
-
     const logout = useCallback(() => {
-        changePage('');
+        clearPage();
         removeSession();
-    }, [ removeSession ]);
+    }, [ clearPage, removeSession ]);
+
+    const openAdmin = useCallback(() => {
+        
+    }, [  ]);
 
     return (
         <div id="sidebar">
@@ -59,12 +58,17 @@ export const NavView: FC<{  }> = props => {
                 <li className="btn" onClick={ event => setPage('news') }>
                     <img src="/images/icons/news.png" className="icon" />
                 </li>
-                <li className="btn" onClick={ event => closePage() }>
+                <li className="btn" onClick={ event => setNitro() }>
                     <img src="/images/icons/client.png" className="icon" />
                 </li>
                 <li className="btn" onClick={ event => logout() }>
                     <img src="/images/icons/exit.png" className="icon" />
                 </li>
+                { getSession().userInfo.rank >= configManager.config.mythical.ranks.adm &&
+                <li className="btn" onClick={ event => openAdmin() }>
+                    <img src="/images/icons/admin.png" className="icon" />
+                </li>
+                }
             </ul>
         </div>
     );

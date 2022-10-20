@@ -1,19 +1,13 @@
 import { FC, useCallback, useEffect, useRef } from 'react';
-import { ConfigManager } from '../../core/config/config.manager';
 import { UserInfoDefinition } from '../../core/definition/user-info.definition';
 import { SessionHooks } from '../../core/hooks/session.hooks';
 import { RequestManager } from '../../core/request/request.manager';
 
 export const LoginView: FC<{  }> = props => {
-    const configManager: ConfigManager = new ConfigManager();
     const requestManager: RequestManager = new RequestManager();
     const { makeSession} = SessionHooks();
     const username = useRef<HTMLInputElement>();
     const password = useRef<HTMLInputElement>();
-
-    useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Welcome';
-    }, [  ]);
 
     const requestLogin = useCallback(async (user: string, psw: string) => {
         let response: any = await requestManager.post('users/get', {
@@ -32,6 +26,7 @@ export const LoginView: FC<{  }> = props => {
         definition.username = response.data.user.nickname;
         definition.look = response.data.user.avatar;
         definition.motto = response.data.user.mission;
+        definition.rank = response.data.user.rank;
         makeSession(response.data.sso, definition);
     }, [ requestManager, makeSession ]);
 

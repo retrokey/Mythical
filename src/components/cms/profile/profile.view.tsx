@@ -1,14 +1,10 @@
-import { FC, useCallback, useEffect } from 'react';
+import { FC, useCallback } from 'react';
 import { ConfigManager } from '../../../core/config/config.manager';
 import { ProfileHooks } from '../../../core/hooks/profile.hooks';
 
 export const ProfileView: FC<{  }> = props => {
     const configManager: ConfigManager = new ConfigManager();
     const { getProfile } = ProfileHooks();
-
-    useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Profile of ' + getUser().userInfo.username;
-    }, [  ]);
 
     const getUser = useCallback(() => {
         return getProfile();

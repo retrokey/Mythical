@@ -4,4 +4,5 @@ export class UserInfoDefinition {
     public motto: string;
     public role: string;
     public status: '0' | '1';
+    public rank: number;
 }

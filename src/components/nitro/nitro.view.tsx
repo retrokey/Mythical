@@ -8,10 +8,6 @@ export const NitroView: FC<{  }> = props => {
     const { getSession } = SessionHooks();
 
     useEffect(() => {
-        document.title = configManager.config.mythical.name + ' - Nitro';
-    }, [  ]);
-
-    useEffect(() => {
         if (getSession() == null) {
             return;
         }
