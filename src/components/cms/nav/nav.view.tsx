@@ -16,7 +16,6 @@ export const NavView: FC<{  }> = props => {
  
     const ifAdmin = useCallback(() => {
         permissionManager.getPermission('admin').then((admin: boolean) => {
-            console.log(admin);
             if (!admin) {
                 return;
             }
