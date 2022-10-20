@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect, useRef } from 'react';
 import { UserInfoDefinition } from '../../core/definition/user-info.definition';
 import { PageHooks } from '../../core/hooks/page.hooks';
 import { SessionHooks } from '../../core/hooks/session.hooks';
-import { RequestManager } from '../../core/request/request.manager';
+import { RequestManager } from '../../core/manager/request.manager';
 
 export const LoginView: FC<{  }> = props => {
     const requestManager: RequestManager = new RequestManager();

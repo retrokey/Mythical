@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useBetween } from 'use-between';
-import { ConfigManager } from '../config/config.manager';
+import { ConfigManager } from '../manager/config.manager';
 
 const PageHooksState = () => {
     const configManager: ConfigManager = new ConfigManager();

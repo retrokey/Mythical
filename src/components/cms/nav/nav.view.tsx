@@ -1,17 +1,36 @@
-import { FC, useCallback } from 'react';
-import { ConfigManager } from '../../../core/config/config.manager';
+import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
+import { ConfigManager } from '../../../core/manager/config.manager';
 import { PageHooks } from '../../../core/hooks/page.hooks';
 import { ProfileHooks } from '../../../core/hooks/profile.hooks';
 import { SessionHooks } from '../../../core/hooks/session.hooks';
 import { StaffHooks } from '../../../core/hooks/staff.hooks';
+import { PermissionManager } from '../../../core/manager/permission.manager';
 
 export const NavView: FC<{  }> = props => {
-    const configManager: ConfigManager = new ConfigManager();
+    const permissionManager: PermissionManager = new PermissionManager();
     const { changePage, setNitro, clearPage } = PageHooks();
     const { removeSession, getSession } = SessionHooks();
     const { setProfile } = ProfileHooks();
     const { setStaff } = StaffHooks();
+    const [ adminBtn, setAdminBtn ] = useState<ReactElement>();
  
+    const ifAdmin = useCallback(() => {
+        permissionManager.getPermission('admin').then((admin: boolean) => {
+            console.log(admin);
+            if (!admin) {
+                return;
+            }
+
+            setAdminBtn(<li className="btn" onClick={ event => openAdmin() }>
+                <img src="/images/icons/admin.png" className="icon" />
+            </li>);
+        });
+    }, [ permissionManager ]);
+
+    useEffect(() => {
+        ifAdmin();
+    }, [ ifAdmin ]);
+
     const setPage = useCallback((page: string) => {
         if (page == 'profile') {
             setProfile(getSession().userInfo.username).then(() => {
@@ -32,7 +51,7 @@ export const NavView: FC<{  }> = props => {
         if (page == 'news') {
             changePage('news', 'News Archive');
         }
-    }, [ setProfile, getSession, changePage ]);
+    }, [ setProfile, setStaff, getSession, changePage ]);
 
     const logout = useCallback(() => {
         clearPage();
@@ -64,11 +83,7 @@ export const NavView: FC<{  }> = props => {
                 <li className="btn" onClick={ event => logout() }>
                     <img src="/images/icons/exit.png" className="icon" />
                 </li>
-                { getSession().userInfo.rank >= configManager.config.mythical.ranks.adm &&
-                <li className="btn" onClick={ event => openAdmin() }>
-                    <img src="/images/icons/admin.png" className="icon" />
-                </li>
-                }
+                { adminBtn }
             </ul>
         </div>
     );

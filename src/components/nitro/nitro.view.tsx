@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { ConfigManager } from '../../core/config/config.manager';
+import { ConfigManager } from '../../core/manager/config.manager';
 import { SessionHooks } from '../../core/hooks/session.hooks';
 
 export const NitroView: FC<{  }> = props => {

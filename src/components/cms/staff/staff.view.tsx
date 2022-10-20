@@ -1,5 +1,5 @@
 import { FC, ReactElement, useCallback, useMemo } from 'react';
-import { ConfigManager } from '../../../core/config/config.manager';
+import { ConfigManager } from '../../../core/manager/config.manager';
 import { PageHooks } from '../../../core/hooks/page.hooks';
 import { ProfileHooks } from '../../../core/hooks/profile.hooks';
 import { StaffHooks } from '../../../core/hooks/staff.hooks';

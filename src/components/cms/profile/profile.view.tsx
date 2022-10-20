@@ -1,5 +1,5 @@
 import { FC, useCallback } from 'react';
-import { ConfigManager } from '../../../core/config/config.manager';
+import { ConfigManager } from '../../../core/manager/config.manager';
 import { ProfileHooks } from '../../../core/hooks/profile.hooks';
 
 export const ProfileView: FC<{  }> = props => {

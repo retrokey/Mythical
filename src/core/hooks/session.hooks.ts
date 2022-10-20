@@ -3,7 +3,7 @@ import { useBetween } from 'use-between';
 import { UserInfoDefinition } from '../definition/user-info.definition';
 import { UserSessionDefinition } from '../definition/user-session.definiton';
 import { SessionSlice } from '../store/feature/session.reducer';
-import { store } from '../store/Store';
+import { Store } from '../store/Store';
 
 const SessionHooksState = () => {
     const [ logged, setLogged ] = useState<boolean>(false);
@@ -13,27 +13,28 @@ const SessionHooksState = () => {
         session.SSO = SSO;
         session.userInfo = userInfo;
         setLogged(true);
-        store.dispatch(SessionSlice.actions.add(session));
+        Store.dispatch(SessionSlice.actions.add(session));
     }
 
     const getSession = () => {
         if (localStorage.getItem('session') == null) {
             setLogged(false);
         } else {
-            store.dispatch(SessionSlice.actions.check({}));
+            Store.dispatch(SessionSlice.actions.check({}));
             setLogged(true);
-            return store.getState().session;
+            let session: UserSessionDefinition = Store.getState().session;
+            return session;
         }
     }
 
     const setSession = () => {
-        store.dispatch(SessionSlice.actions.check({}));
+        Store.dispatch(SessionSlice.actions.check({}));
         setLogged(true);
     }
 
     const removeSession = () => {
         setLogged(false);
-        store.dispatch(SessionSlice.actions.remove({}));
+        Store.dispatch(SessionSlice.actions.remove({}));
     }
 
     const haveSession = () => {

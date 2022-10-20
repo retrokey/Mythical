@@ -1,4 +1,4 @@
-import { ConfigManager } from '../config/config.manager';
+import { ConfigManager } from './config.manager';
 
 export class RequestManager {
     private readonly configManager: ConfigManager = new ConfigManager();

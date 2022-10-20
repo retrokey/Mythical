@@ -4,7 +4,7 @@ import { UserSessionDefinition } from '../../definition/user-session.definiton';
 const initialState: UserSessionDefinition = {
     SSO: '',
     userInfo: null
-}
+};
 
 export const SessionSlice: Slice = createSlice({
     name: 'session',
@@ -23,6 +23,9 @@ export const SessionSlice: Slice = createSlice({
         remove: () => {
             localStorage.removeItem('session');
             return initialState;
+        },
+        get: (state) => {
+            return state;
         }
     }
 });
