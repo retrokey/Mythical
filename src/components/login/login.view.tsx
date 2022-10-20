@@ -1,11 +1,13 @@
 import { FC, useCallback, useEffect, useRef } from 'react';
 import { UserInfoDefinition } from '../../core/definition/user-info.definition';
+import { PageHooks } from '../../core/hooks/page.hooks';
 import { SessionHooks } from '../../core/hooks/session.hooks';
 import { RequestManager } from '../../core/request/request.manager';
 
 export const LoginView: FC<{  }> = props => {
     const requestManager: RequestManager = new RequestManager();
     const { makeSession} = SessionHooks();
+    const { setNitro } = PageHooks();
     const username = useRef<HTMLInputElement>();
     const password = useRef<HTMLInputElement>();
 
@@ -27,6 +29,7 @@ export const LoginView: FC<{  }> = props => {
         definition.look = response.data.user.avatar;
         definition.motto = response.data.user.mission;
         definition.rank = response.data.user.rank;
+        setNitro();
         makeSession(response.data.sso, definition);
     }, [ requestManager, makeSession ]);
 

@@ -22,7 +22,7 @@ const PageHooksState = () => {
     }
 
     const clearPage = () => {
-        setPageNow('');
+        changePage('', 'Welcome');
     }
 
     return { changePage, pageCheck, setNitro, clearPage };
