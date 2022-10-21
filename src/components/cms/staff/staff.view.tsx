@@ -5,7 +5,6 @@ import { ProfileHooks } from '../../../core/hooks/profile.hooks';
 import { StaffHooks } from '../../../core/hooks/staff.hooks';
 
 export const StaffView: FC<{  }> = props => {
-    const configManager: ConfigManager = new ConfigManager();
     const { getStaff } = StaffHooks();
     const { changePage } = PageHooks();
     const { setProfile } = ProfileHooks();

@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useBetween } from 'use-between';
+import { RequestManager } from '../manager/request.manager';
+import { useState } from 'react';
 import { UserInfoDefinition } from '../definition/user-info.definition';
 import { UserProfileDefinition } from '../definition/user-profile.definition';
-import { RequestManager } from '../manager/request.manager';
 
 const ProfileHooksState = () => {
     const requestManager: RequestManager = new RequestManager();

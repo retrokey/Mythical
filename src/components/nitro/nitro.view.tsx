@@ -5,15 +5,15 @@ import { SessionHooks } from '../../core/hooks/session.hooks';
 export const NitroView: FC<{  }> = props => {
     const configManager: ConfigManager = new ConfigManager();
     const [ SSO, setSSO ] = useState<string>('');
-    const { getSession } = SessionHooks();
+    const { getUser } = SessionHooks();
 
     useEffect(() => {
-        if (getSession() == null) {
+        if (getUser() == null) {
             return;
         }
 
-        setSSO(getSession().SSO);
-    }, [ getSession, setSSO ]);
+        setSSO(getUser().userInfo.SSO);
+    }, [ getUser, setSSO ]);
 
     return (
         <iframe src={ configManager.config.mythical.nitro_url + SSO } className="nitro-container"></iframe>

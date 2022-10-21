@@ -1,11 +1,10 @@
-import { UserInfo } from 'os';
-import { config } from 'process';
-import { useState } from 'react';
+
 import { useBetween } from 'use-between';
 import { ConfigManager } from '../manager/config.manager';
+import { RequestManager } from '../manager/request.manager';
+import { useState } from 'react';
 import { StaffListDefinition } from '../definition/staff-list.definition';
 import { UserInfoDefinition } from '../definition/user-info.definition';
-import { RequestManager } from '../manager/request.manager';
 
 const StaffHooksState = () => {
     const configManager: ConfigManager = new ConfigManager();

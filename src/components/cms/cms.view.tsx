@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { PageHooks } from '../../core/hooks/page.hooks';
 import { NavView } from './nav/nav.view';
 import { ProfileView } from './profile/profile.view';

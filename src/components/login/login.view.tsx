@@ -1,37 +1,31 @@
 import { FC, useCallback, useEffect, useRef } from 'react';
-import { UserInfoDefinition } from '../../core/definition/user-info.definition';
 import { PageHooks } from '../../core/hooks/page.hooks';
 import { SessionHooks } from '../../core/hooks/session.hooks';
 import { RequestManager } from '../../core/manager/request.manager';
 
 export const LoginView: FC<{  }> = props => {
     const requestManager: RequestManager = new RequestManager();
-    const { makeSession} = SessionHooks();
+    const { registerUser, getUser } = SessionHooks();
     const { setNitro } = PageHooks();
     const username = useRef<HTMLInputElement>();
     const password = useRef<HTMLInputElement>();
 
-    const requestLogin = useCallback(async (user: string, psw: string) => {
-        let response: any = await requestManager.post('users/get', {
+    const requestLogin = useCallback((user: string, psw: string) => {
+        requestManager.post('users/get', {
             'content-type': 'application/json'
         }, {
             username: user,
             password: psw
+        })
+        .then((response) => {        
+            if (response.status != 'success') {
+                return;
+            }
+    
+            registerUser(response.data);
+            setNitro();
         });
-
-        if (response.status != 'success') {
-            return;
-        }
-
-        // TODO: add other value when need
-        let definition: UserInfoDefinition = new UserInfoDefinition();
-        definition.username = response.data.user.nickname;
-        definition.look = response.data.user.avatar;
-        definition.motto = response.data.user.mission;
-        definition.rank = response.data.user.rank;
-        setNitro();
-        makeSession(response.data.sso, definition);
-    }, [ requestManager, makeSession ]);
+    }, [ requestManager, getUser, registerUser, setNitro ]);
 
     const keyDown = useCallback((event: KeyboardEvent) => {
         if (event.key == 'Enter' || event.key  == 'NumpadEnter') {

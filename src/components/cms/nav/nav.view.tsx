@@ -1,39 +1,28 @@
 import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
-import { ConfigManager } from '../../../core/manager/config.manager';
 import { PageHooks } from '../../../core/hooks/page.hooks';
 import { ProfileHooks } from '../../../core/hooks/profile.hooks';
 import { SessionHooks } from '../../../core/hooks/session.hooks';
 import { StaffHooks } from '../../../core/hooks/staff.hooks';
-import { PermissionManager } from '../../../core/manager/permission.manager';
 
 export const NavView: FC<{  }> = props => {
-    const permissionManager: PermissionManager = new PermissionManager();
-    const { changePage, setNitro, clearPage } = PageHooks();
-    const { removeSession, getSession } = SessionHooks();
+    const { changePage, setNitro, clearPage, changeAdminState } = PageHooks();
+    const { removeUser, getUser, checkPermission } = SessionHooks();
     const { setProfile } = ProfileHooks();
     const { setStaff } = StaffHooks();
     const [ adminBtn, setAdminBtn ] = useState<ReactElement>();
  
-    const ifAdmin = useCallback(() => {
-        permissionManager.getPermission('admin').then((admin: boolean) => {
-            if (!admin) {
-                return;
-            }
-
-            setAdminBtn(<li className="btn" onClick={ event => openAdmin() }>
+    useEffect(() => {
+        if (checkPermission('admin')) {
+            setAdminBtn(<li className="btn" onClick={ event => changeAdminState(true) }>
                 <img src="/images/icons/admin.png" className="icon" />
             </li>);
-        });
-    }, [ permissionManager ]);
-
-    useEffect(() => {
-        ifAdmin();
-    }, [ ifAdmin ]);
+        }
+    }, [ checkPermission, setAdminBtn ]);
 
     const setPage = useCallback((page: string) => {
         if (page == 'profile') {
-            setProfile(getSession().userInfo.username).then(() => {
-                changePage('profile', 'Profile of ' + getSession().userInfo.username);
+            setProfile(getUser().userInfo.username).then(() => {
+                changePage('profile', 'Profile of ' + getUser().userInfo.username);
             });
         }
 
@@ -50,16 +39,12 @@ export const NavView: FC<{  }> = props => {
         if (page == 'news') {
             changePage('news', 'News Archive');
         }
-    }, [ setProfile, setStaff, getSession, changePage ]);
+    }, [ setProfile, getUser, setStaff, changePage ]);
 
     const logout = useCallback(() => {
         clearPage();
-        removeSession();
-    }, [ clearPage, removeSession ]);
-
-    const openAdmin = useCallback(() => {
-        
-    }, [  ]);
+        removeUser();
+    }, [ clearPage, removeUser ]);
 
     return (
         <div id="sidebar">

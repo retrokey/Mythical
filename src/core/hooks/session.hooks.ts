@@ -1,51 +1,61 @@
-import { useState } from 'react';
 import { useBetween } from 'use-between';
-import { UserInfoDefinition } from '../definition/user-info.definition';
 import { UserSessionDefinition } from '../definition/user-session.definiton';
-import { SessionSlice } from '../store/feature/session.reducer';
-import { Store } from '../store/Store';
+import { Store } from '../store/store.redux';
+import { add, remove, set } from '../store/reducer/session.reducer';
+import { useState } from 'react';
+import { PermissionManager } from '../manager/permission.manager';
 
 const SessionHooksState = () => {
+    const permissionManager: PermissionManager = new PermissionManager();
     const [ logged, setLogged ] = useState<boolean>(false);
 
-    const makeSession = (SSO: string, userInfo: UserInfoDefinition) => {
-        let session: UserSessionDefinition = new UserSessionDefinition();
-        session.SSO = SSO;
-        session.userInfo = userInfo;
-        setLogged(true);
-        Store.dispatch(SessionSlice.actions.add(session));
-    }
-
-    const getSession = () => {
-        if (localStorage.getItem('session') == null) {
-            setLogged(false);
-        } else {
-            Store.dispatch(SessionSlice.actions.check({}));
-            setLogged(true);
-            let session: UserSessionDefinition = Store.getState().session;
-            return session;
-        }
-    }
-
-    const setSession = () => {
-        Store.dispatch(SessionSlice.actions.check({}));
+    const registerUser = async (json: any) => {
+        let userSession: UserSessionDefinition = new UserSessionDefinition();
+        userSession.userInfo.username = json.user.nickname;
+        userSession.userInfo.SSO = json.sso;
+        userSession.userInfo.look = json.user.avatar;
+        userSession.userInfo.motto = json.user.mission;
+        userSession.userInfo.role = json.user.role;
+        userSession.userInfo.rank = json.user.rank;
+        Store.dispatch(add(userSession));
+        await loadPermission('admin');
         setLogged(true);
     }
 
-    const removeSession = () => {
+    const loadPermission = async (permission: string) => {
+        let havePermission: boolean = await permissionManager.getPermission(permission, getUser().userInfo.rank);
+        getUser().userInfo.permission.set(permission, havePermission);
+    }
+
+    const getUser = () => {
+        let userSession: UserSessionDefinition = Store.getState().session;
+        return userSession;
+    }
+
+    const removeUser = () => {
+        Store.dispatch(remove());
         setLogged(false);
-        Store.dispatch(SessionSlice.actions.remove({}));
     }
 
-    const haveSession = () => {
-        return localStorage.getItem('session') != null;
+    const onRefresh = () => {
+        return localStorage.getItem('session') == null ? false : true;
     }
 
-    const getLogged = () => {
+    const setSession = async () => {
+        Store.dispatch(set());
+        await loadPermission('admin');
+        setLogged(true);
+    }
+
+    const checkLogged = () => {
         return logged;
     }
 
-    return { makeSession, getSession, setSession, removeSession, haveSession, getLogged };
+    const checkPermission = (permission: string) => {
+        return getUser().userInfo.permission.get(permission);
+    }
+
+    return { registerUser, getUser, removeUser, onRefresh, setSession, checkLogged, checkPermission };
 }
 
 export const SessionHooks = () => useBetween(SessionHooksState);

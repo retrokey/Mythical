@@ -1,29 +1,34 @@
 import { FC, useEffect } from 'react';
 import { PageHooks } from '../core/hooks/page.hooks';
 import { SessionHooks } from '../core/hooks/session.hooks';
+import { AdminView } from './admin/admin.view';
 import { CMSView } from './cms/cms.view';
 import { LoginView } from './login/login.view';
 import { NitroView } from './nitro/nitro.view';
 
 export const MainView: FC<{  }> = props => {
-    const { setSession, haveSession, getLogged } = SessionHooks();
-    const { setNitro } = PageHooks();
+    const { checkLogged, onRefresh, setSession } = SessionHooks();
+    const { setNitro, adminCheck } = PageHooks();
 
     useEffect(() => {
         window.addEventListener('load', () => {
-            if (haveSession()) {
-                setNitro();
+            if (onRefresh()) {
                 setSession();
+                setNitro();
             }
         });
-    }, [ setSession, haveSession ]);
+    }, [ onRefresh, setSession, setNitro ]);
 
-    if (getLogged()) {
+    if (checkLogged() && !adminCheck()) {
         return (
             <>
             <CMSView></CMSView>
             <NitroView></NitroView>
             </>
+        );
+    } else if (checkLogged() && adminCheck()) {
+        return (
+            <AdminView></AdminView>
         );
     } else {
         return (
