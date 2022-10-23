@@ -14,6 +14,7 @@ export class RequestManager {
     public async post(url: string, header: {}, body: {}): Promise<any> {
         let request = await fetch(this.configManager.config.mythical.api_url + url, {
             method: 'POST',
+            mode: 'cors',
             headers: header,
             body: JSON.stringify(body)
         });
