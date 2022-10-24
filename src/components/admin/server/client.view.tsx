@@ -29,12 +29,11 @@ export const ClientView: FC<{}> = props => {
                     <div className="box">
                         <div className="header">Client</div>
                         <div className="content">
-                            <table>
-                                <tr>
-                                    <td>TRY-1</td>
-                                    <td>TRY-2</td>
-                                </tr>
-                            </table>
+                            <div className="form-group">
+                                <label>Emulator Host</label>
+                                <input type="text" />
+                            </div>
+                            <button className="submit">Save</button>
                         </div>
                     </div>
                 </div>

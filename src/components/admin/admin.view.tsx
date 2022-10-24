@@ -31,6 +31,14 @@ export const AdminView: FC<{  }> = props => {
                     <i className="icon server" />
                     Server
                 </li>
+                <li className={ `d-flex justify-content-between`}>
+                    <i className="icon user" />
+                    User & Moderation
+                </li>
+                <li className={ `d-flex justify-content-between`}>
+                    <i className="icon site" />
+                    Site & Content
+                </li>
             </ul>
             <div className="body">
                 { adminPageCheck('dash') && <DashView />}

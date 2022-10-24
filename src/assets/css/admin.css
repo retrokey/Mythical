@@ -6,6 +6,7 @@ body {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+	overflow: hidden;
 }
 
 .navigation {
@@ -14,17 +15,18 @@ body {
     padding: 0;
     margin-top: 3%;
 }
+
 .navigation li {
     background: linear-gradient(to bottom, #97b4d7 0%, #b6cae6 100%);
     cursor: pointer;
-    width: 10.5%;
+    width: auto;
     padding: 5px 10px;
     border: 1px solid #000;
+    border-bottom: 0;
 }
 
 .navigation li.active {
     background: #fff;
-    border-bottom: 0;
 }
 
 .navigation li .icon {
@@ -40,13 +42,21 @@ body {
     background: url('/images/admin/server.png');
 }
 
+.navigation li .icon.user {
+    background: url('/images/admin/user.png');
+}
+
+.navigation li .icon.site {
+    background: url('/images/admin/site.png');
+}
+
 .subnavigation {
     list-style: none;
     padding: 0;
 }
 
 .subnavigation li .section {
-    background: linear-gradient(to bottom, #83a1c6 0%, #385d88 100%);
+    background: #334964;
     padding: 4px 5px;
     font-size: 16px;
     border: 1px solid #000;
@@ -68,6 +78,7 @@ body {
     font-size: 14px;
     border: 1px solid #000;
     border-top: 0;
+    cursor: pointer;
     border-bottom: 0;
 }
 
@@ -86,7 +97,6 @@ body {
     padding: 1%;
     width: 100%;
     border: 1px solid #000;
-    border-top: 0;
     background: #fff;
     height: auto;
 }
@@ -106,7 +116,7 @@ body {
 }
 
 .box .content {
-    background: #AABFD6;
+    padding: 4px;
 }
 
 table {
@@ -115,7 +125,6 @@ table {
 }
 
 table tr {
-    background: #F9F2F7;
     width: 100%;
 }
 
@@ -138,4 +147,30 @@ footer {
     margin-top: 1%;
     text-align: center;
     color: #fff;
+}
+
+.form-group {
+    margin-bottom: 5px
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    border: 1px solid #AABFD6;
+    font-size: 11px;
+    padding: 2px;
+}
+
+.submit {
+    color: #334964;
+    background: #FFC439;
+    box-shadow: 0 1px #DAA730, inset 0 1px rgba(255, 255, 255, .3);
+    border: 1px solid #EBB534;
+    width: auto;
+    padding: 3px 15px;
 }
