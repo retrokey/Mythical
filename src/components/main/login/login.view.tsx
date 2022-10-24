@@ -1,12 +1,12 @@
 import { FC, useCallback, useEffect, useRef } from 'react';
-import { PageHooks } from '../../core/hooks/page.hooks';
-import { SessionHooks } from '../../core/hooks/session.hooks';
-import { RequestManager } from '../../core/manager/request.manager';
+import { PageHooks } from '../../../core/hooks/page.hooks';
+import { SessionHooks } from '../../../core/hooks/session.hooks';
+import { RequestManager } from '../../../core/manager/request.manager';
 
 export const LoginView: FC<{  }> = props => {
     const requestManager: RequestManager = new RequestManager();
     const { registerUser, getUser } = SessionHooks();
-    const { setNitro } = PageHooks();
+    const { setNitro, changePage } = PageHooks();
     const username = useRef<HTMLInputElement>();
     const password = useRef<HTMLInputElement>();
 
@@ -36,6 +36,7 @@ export const LoginView: FC<{  }> = props => {
 
     useEffect(() =>
     {
+        changePage('', 'Welcome!');
         document.body.addEventListener('keydown', keyDown);
         return () => {
             document.body.removeEventListener('keydown', keyDown);

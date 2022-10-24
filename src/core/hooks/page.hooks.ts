@@ -5,7 +5,7 @@ import { useState } from 'react';
 const PageHooksState = () => {
     const configManager: ConfigManager = new ConfigManager();
     const [ pageNow, setPageNow ] = useState<string>('');
-    const [ admin, setAdmin ] = useState<boolean>(false);
+    const [ adminPageNow, setAdminPageNow ] = useState<string>('');
 
     const changePage = (page: string, title: string) => {
         document.title = configManager.config.mythical.name + ' - ' + title;
@@ -14,6 +14,15 @@ const PageHooksState = () => {
 
     const pageCheck = (page: string) => {
         return pageNow == page ? true : false;
+    }
+    
+    const adminChangePage = (page: string, title: string) => {
+        document.title = configManager.config.mythical.name + ' | AdminCP - ' + title;
+        setAdminPageNow(page);
+    }
+
+    const adminPageCheck = (page: string) => {
+        return adminPageNow == page ? true : false;
     }
 
     const setNitro = () => {
@@ -26,15 +35,7 @@ const PageHooksState = () => {
         changePage('', 'Welcome');
     }
 
-    const changeAdminState = (state: boolean) => {
-        setAdmin(state);
-    }
-
-    const adminCheck = () => {
-        return admin == true;
-    }
-
-    return { changePage, pageCheck, setNitro, clearPage, changeAdminState, adminCheck };
+    return { changePage, pageCheck, setNitro, adminChangePage, adminPageCheck, clearPage };
 }
 
 export const PageHooks = () => useBetween(PageHooksState);

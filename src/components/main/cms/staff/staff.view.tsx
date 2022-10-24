@@ -1,8 +1,7 @@
 import { FC, ReactElement, useCallback, useMemo } from 'react';
-import { ConfigManager } from '../../../core/manager/config.manager';
-import { PageHooks } from '../../../core/hooks/page.hooks';
-import { ProfileHooks } from '../../../core/hooks/profile.hooks';
-import { StaffHooks } from '../../../core/hooks/staff.hooks';
+import { PageHooks } from '../../../../core/hooks/page.hooks';
+import { ProfileHooks } from '../../../../core/hooks/profile.hooks';
+import { StaffHooks } from '../../../../core/hooks/staff.hooks';
 
 export const StaffView: FC<{  }> = props => {
     const { getStaff } = StaffHooks();

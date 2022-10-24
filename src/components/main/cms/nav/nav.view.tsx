@@ -1,11 +1,12 @@
 import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
-import { PageHooks } from '../../../core/hooks/page.hooks';
-import { ProfileHooks } from '../../../core/hooks/profile.hooks';
-import { SessionHooks } from '../../../core/hooks/session.hooks';
-import { StaffHooks } from '../../../core/hooks/staff.hooks';
+import { Link } from 'react-router-dom';
+import { PageHooks } from '../../../../core/hooks/page.hooks';
+import { ProfileHooks } from '../../../../core/hooks/profile.hooks';
+import { SessionHooks } from '../../../../core/hooks/session.hooks';
+import { StaffHooks } from '../../../../core/hooks/staff.hooks';
 
 export const NavView: FC<{  }> = props => {
-    const { changePage, setNitro, clearPage, changeAdminState } = PageHooks();
+    const { changePage, setNitro, clearPage } = PageHooks();
     const { removeUser, getUser, checkPermission } = SessionHooks();
     const { setProfile } = ProfileHooks();
     const { setStaff } = StaffHooks();
@@ -13,9 +14,12 @@ export const NavView: FC<{  }> = props => {
  
     useEffect(() => {
         if (checkPermission('admin')) {
-            setAdminBtn(<li className="btn" onClick={ event => changeAdminState(true) }>
-                <img src="/images/icons/admin.png" className="icon" />
-            </li>);
+            setAdminBtn(
+            <Link to="admin">
+                <li className="btn">
+                    <img src="/images/icons/admin.png" className="icon" />
+                </li>
+            </Link>);
         }
     }, [ checkPermission, setAdminBtn ]);
 
