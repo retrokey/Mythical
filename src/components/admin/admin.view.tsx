@@ -22,28 +22,21 @@ export const AdminView: FC<{  }> = props => {
 
     return (
         <div className="container">
-            <div className="row">
-                <div className="col-12">
-                    <div className="hk_navigation">
-                        <ul className="d-flex">
-                            <li id="dashboard" onClick={ event => adminChangePage('dash', 'Dashboard') }>Dashboard</li>
-                            <li id="server" onClick={ event => adminChangePage('server.client', 'Server: Client Settings') }>Server</li>
-                            <li id="site">Site & Content</li>
-                            <li id="user">Users & Moderation</li>
-                            <li id="back"><Link to="/">Users & Moderation</Link></li>
-                        </ul>
-                    </div>
-                    <div className="hk_welcome">
-                        <span>{ configManager.config.mythical.name } || Housekeeping</span>
-                        <span className="right">Welcome, <b>{ getUser().userInfo.username }</b>!</span>
-                    </div>
-                    <div className="hk_body">
-                        { adminPageCheck('dash') && <DashView />}
-                        { adminPageCheck('server.client') && <ClientView />}
-                    </div>
-                </div>
+            <ul className="navigation d-flex">
+                <li className={ `d-flex justify-content-between${adminPageCheck('dash') ? " active" : ""}`} onClick={ event => adminChangePage('dash', 'Dashboard') }>
+                    <i className="icon dashboard" />
+                    Dashboard
+                </li>
+                <li className={ `d-flex justify-content-between${adminPageCheck('server.client') ? " active" : ""}`} onClick={ event => adminChangePage('server.client', 'Server: Client') }>
+                    <i className="icon server" />
+                    Server
+                </li>
+            </ul>
+            <div className="body">
+                { adminPageCheck('dash') && <DashView />}
+                { adminPageCheck('server.client') && <ClientView />}
             </div>
-            <footer className="text-center">
+            <footer>
                 Mythical Project. All rights reserved<br />
                 Developed by RealCosis<br />
                 Designed by Laynester

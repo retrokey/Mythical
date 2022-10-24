@@ -8,32 +8,33 @@ export const ClientView: FC<{}> = props => {
         <>
             <div className="row">
                 <div className="col-4">
-                    <div className="box_3">
-                        <div className="heading">Server Settings</div>
-                        <ul>
-                            <li onClick={event => adminChangePage('server.client', 'Server: Client Settings')}>Client Settings</li>
-                        </ul>
-                    </div>
+                    <ul className="subnavigation">
+                        <li>
+                            <div className="section d-flex">
+                                <div className="icon"></div>
+                                Server 
+                            </div>
+                            <div className="children d-flex" onClick={ event => adminChangePage('server.client', 'Server: Client') }>   
+                                <div className="icon"></div>
+                                Client
+                            </div>
+                            <div className="children d-flex">   
+                                <div className="icon"></div>
+                                CMS
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div className="col-8">
-                    <div className="body_content">
-                        <div className="box_4">
-                            <div className="heading">Client Settings</div>
-                            <div className="content">
-                                <div className="row">
-                                    <div className="form-group">
-                                        <label>Emulator Host</label>
-                                        <input className="inputs" type="text" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Emulator Port</label>
-                                        <input className="inputs" type="text" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="end d-flex justify-content-center">
-                                <button type="submit">Save</button>
-                            </div>
+                    <div className="box">
+                        <div className="header">Client</div>
+                        <div className="content">
+                            <table>
+                                <tr>
+                                    <td>TRY-1</td>
+                                    <td>TRY-2</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
