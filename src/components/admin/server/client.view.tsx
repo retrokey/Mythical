@@ -33,7 +33,9 @@ export const ClientView: FC<{}> = props => {
                                 <label>Emulator Host</label>
                                 <input type="text" />
                             </div>
-                            <button className="submit">Save</button>
+                            <div className="d-flex justify-content-center">
+                                <button className="submit">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
