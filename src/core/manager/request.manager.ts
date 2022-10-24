@@ -6,6 +6,7 @@ export class RequestManager {
     public async get(url: string, header: {}): Promise<any> {
         let request = await fetch(this.configManager.config.mythical.api_url + url, {
             method: 'GET',
+            mode: 'cors',
             headers: header
         });
         return await request.json();

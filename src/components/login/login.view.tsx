@@ -11,7 +11,7 @@ export const LoginView: FC<{  }> = props => {
     const password = useRef<HTMLInputElement>();
 
     const requestLogin = useCallback((user: string, psw: string) => {
-        requestManager.post('users/get', {
+        requestManager.post('user/find', {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         }, {

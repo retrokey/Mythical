@@ -9,9 +9,9 @@ const ProfileHooksState = () => {
     const [ userData, setUserData ] = useState<UserProfileDefinition>(null);
 
     const setProfile = async (username: string) => {
-        let response: any = await requestManager.get('users/get/profile', {
+        let response: any = await requestManager.get('user/profile/' + username, {
             'content-type': 'application/json',
-            'requested-user': username
+            'access-control-allow-origin': '*'
         });
 
         if (response.status != 'success') {

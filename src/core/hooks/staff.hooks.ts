@@ -14,9 +14,9 @@ const StaffHooksState = () => {
     const setStaff = async () => {
         let staffListDefinition: StaffListDefinition = new StaffListDefinition();
 
-        let founderResponse: any = await requestManager.get('users/get/rank', {
+        let founderResponse: any = await requestManager.get('user/rank/' + configManager.config.mythical.ranks.fou, {
             'content-type': 'application/json',
-            'requested-rank': configManager.config.mythical.ranks.fou
+            'access-control-allow-origin': '*'
         });
         if (founderResponse.data.staffer == null) {
             staffListDefinition.fou = new Array<UserInfoDefinition>(0);
@@ -34,9 +34,9 @@ const StaffHooksState = () => {
             staffListDefinition.fou = founderArray;
         }
 
-        let adminResponse: any = await requestManager.get('users/get/rank', {
+        let adminResponse: any = await requestManager.get('user/rank/' + configManager.config.mythical.ranks.adm, {
             'content-type': 'application/json',
-            'requested-rank': configManager.config.mythical.ranks.adm
+            'access-control-allow-origin': '*'
         });
         if (adminResponse.data.staffer == null) {
             staffListDefinition.adm = new Array<UserInfoDefinition>(0);
@@ -54,9 +54,9 @@ const StaffHooksState = () => {
             staffListDefinition.adm = admArray;
         }
 
-        let modResponse: any = await requestManager.get('users/get/rank', {
+        let modResponse: any = await requestManager.get('user/rank/' + configManager.config.mythical.ranks.mod, {
             'content-type': 'application/json',
-            'requested-rank': configManager.config.mythical.ranks.mod
+            'access-control-allow-origin': '*'
         });
         if (modResponse.data.staffer == null) {
             staffListDefinition.mod = new Array<UserInfoDefinition>(0);
