@@ -1,20 +1,9 @@
 import { FC, useEffect } from 'react';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainView } from './components/main/main.view';
 import { AdminView } from './components/admin/admin.view';
 import { SessionHooks } from './core/hooks/session.hooks';
 import { PageHooks } from './core/hooks/page.hooks';
-
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainView />
-    },
-    {
-        path: "admin",
-        element: <AdminView />
-    },
-]);
 
 export const Mythical: FC<{  }> = props => {
     const { onRefresh, setSession } = SessionHooks();
@@ -30,6 +19,11 @@ export const Mythical: FC<{  }> = props => {
     }, [  ]);
 
     return (
-        <RouterProvider router={ router } />
+        <BrowserRouter>
+            <Routes>
+                <Route index element={ <MainView /> } />
+                <Route path='admin' element={ <AdminView /> } />
+            </Routes>
+        </BrowserRouter>
     );
 }

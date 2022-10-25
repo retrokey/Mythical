@@ -1,24 +1,15 @@
 import { FC, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { PageHooks } from '../../core/hooks/page.hooks';
-import { SessionHooks } from '../../core/hooks/session.hooks';
-import { ConfigManager } from '../../core/manager/config.manager';
 import { DashView } from './dash/dash.view';
 import { ClientView } from './server/client.view';
 import { CMSView } from './server/cms.view';
 
 export const AdminView: FC<{  }> = props => {
-    const configManager = new ConfigManager();
     const { adminPageCheck, adminChangePage, adminPageCheckS } = PageHooks();
-    const { getUser } = SessionHooks();
 
     useEffect(() => {
-        const style: HTMLLinkElement = document.createElement("link");
-        style.rel = 'stylesheet';
-        style.type = 'text/css';
-        style.href= 'css/admin.css';
-        document.head.appendChild(style);
-        adminChangePage('dash', 'Dashboard')
+        document.head.getElementsByClassName('css')[0].setAttribute('href', 'css/admin.css');
+        adminChangePage('dash', 'Dashboard');
     }, [  ]);
 
     return (
