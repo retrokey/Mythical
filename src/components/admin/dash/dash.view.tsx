@@ -12,14 +12,16 @@ export const DashView: FC<{}> = props => {
                         <div className="header">System Overview</div>
                         <div className="content">
                             <table>
-                                <tr>
-                                    <td>Mythical Version:</td>
-                                    <td>{ configManager.mythical.version }</td>
-                                </tr>
-                                <tr>
-                                    <td>Author:</td>
-                                    <td>{ configManager.mythical.author.name } ({ configManager.mythical.author.email })</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>Mythical Version:</td>
+                                        <td>{ configManager.mythical.version }</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Author:</td>
+                                        <td>{ configManager.mythical.author.name } ({ configManager.mythical.author.email })</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>

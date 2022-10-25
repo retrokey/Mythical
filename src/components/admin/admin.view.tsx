@@ -5,10 +5,11 @@ import { SessionHooks } from '../../core/hooks/session.hooks';
 import { ConfigManager } from '../../core/manager/config.manager';
 import { DashView } from './dash/dash.view';
 import { ClientView } from './server/client.view';
+import { CMSView } from './server/cms.view';
 
 export const AdminView: FC<{  }> = props => {
     const configManager = new ConfigManager();
-    const { adminPageCheck, adminChangePage } = PageHooks();
+    const { adminPageCheck, adminChangePage, adminPageCheckS } = PageHooks();
     const { getUser } = SessionHooks();
 
     useEffect(() => {
@@ -27,7 +28,7 @@ export const AdminView: FC<{  }> = props => {
                     <i className="icon dashboard" />
                     Dashboard
                 </li>
-                <li className={ `d-flex justify-content-between${adminPageCheck('server.client') ? " active" : ""}`} onClick={ event => adminChangePage('server.client', 'Server: Client') }>
+                <li className={ `d-flex justify-content-between${adminPageCheckS('server') ? " active" : ""}`} onClick={ event => adminChangePage('server.client', 'Server: Client Settings') }>
                     <i className="icon server" />
                     Server
                 </li>
@@ -43,6 +44,7 @@ export const AdminView: FC<{  }> = props => {
             <div className="body">
                 { adminPageCheck('dash') && <DashView />}
                 { adminPageCheck('server.client') && <ClientView />}
+                { adminPageCheck('server.cms') && <CMSView />}
             </div>
             <footer>
                 Mythical Project. All rights reserved<br />

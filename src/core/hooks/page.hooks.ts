@@ -25,17 +25,15 @@ const PageHooksState = () => {
         return adminPageNow == page ? true : false;
     }
 
+    const adminPageCheckS = (category: string) => {
+        return adminPageNow.startsWith(category) ? true : false;
+    }
+
     const setNitro = () => {
-        if (!pageCheck('')) {
-            changePage('', 'Nitro');
-        }
+        changePage('', 'Nitro');
     }
 
-    const clearPage = () => {
-        changePage('', 'Welcome');
-    }
-
-    return { changePage, pageCheck, setNitro, adminChangePage, adminPageCheck, clearPage };
+    return { changePage, pageCheck, setNitro, adminChangePage, adminPageCheckS, adminPageCheck };
 }
 
 export const PageHooks = () => useBetween(PageHooksState);

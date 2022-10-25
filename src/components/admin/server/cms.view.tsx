@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, useCallback, useRef, KeyboardEvent } from 'react';
 import { PageHooks } from '../../../core/hooks/page.hooks';
 
-export const ClientView: FC<{}> = props => {
+export const CMSView: FC<{}> = props => {
     const { adminChangePage } = PageHooks();
 
     return (
@@ -14,7 +14,7 @@ export const ClientView: FC<{}> = props => {
                                 <div className="icon"></div>
                                 Server 
                             </div>
-                            <div className="children d-flex" onClick={ event => adminChangePage('server.client', 'Server: Client Settings') }>   
+                            <div className="children d-flex" onClick={ event => adminChangePage('server.client', 'Server: Client Settings') }>
                                 <div className="icon"></div>
                                 Client Settings
                             </div>
@@ -27,10 +27,10 @@ export const ClientView: FC<{}> = props => {
                 </div>
                 <div className="col-8">
                     <div className="box">
-                        <div className="header">Client Settings</div>
+                        <div className="header">CMS Settings</div>
                         <div className="content">
                             <div className="form-group">
-                                <label>Emulator Host</label>
+                                <label>Hotel Name</label>
                                 <input type="text" />
                             </div>
                             <div className="d-flex justify-content-center">

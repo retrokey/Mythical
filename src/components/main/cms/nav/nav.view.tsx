@@ -6,7 +6,7 @@ import { SessionHooks } from '../../../../core/hooks/session.hooks';
 import { StaffHooks } from '../../../../core/hooks/staff.hooks';
 
 export const NavView: FC<{  }> = props => {
-    const { changePage, setNitro, clearPage } = PageHooks();
+    const { changePage, setNitro } = PageHooks();
     const { removeUser, getUser, checkPermission } = SessionHooks();
     const { setProfile } = ProfileHooks();
     const { setStaff } = StaffHooks();
@@ -46,9 +46,9 @@ export const NavView: FC<{  }> = props => {
     }, [ setProfile, getUser, setStaff, changePage ]);
 
     const logout = useCallback(() => {
-        clearPage();
+        changePage('', 'Welcome!');
         removeUser();
-    }, [ clearPage, removeUser ]);
+    }, [ changePage, removeUser ]);
 
     return (
         <div id="sidebar">
