@@ -51,6 +51,7 @@ body {
 }
 
 .subnavigation {
+    background: #E2E2E0;
     list-style: none;
     padding: 0;
 }
@@ -72,7 +73,6 @@ body {
 }
 
 .subnavigation li .children {
-    background: #F9F2F7;
     color: #000;
     padding: 0 15px;
     font-size: 14px;
