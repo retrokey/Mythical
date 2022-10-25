@@ -131,11 +131,7 @@ table tr {
 table tr td {
     padding: 4px 7px;
     width: 50%;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
-}
-
-table tr td:not(:last-child) {
-    border-right: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid rgba(0, 0, 0, .1);
 }
 
 table tr td:last-child {
