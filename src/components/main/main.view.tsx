@@ -8,7 +8,7 @@ export const MainView: FC<{  }> = props => {
     const { checkLogged } = SessionHooks();
 
     useEffect(() => {
-        document.head.getElementsByClassName('css')[0].setAttribute('href', 'css/mythical.css');
+        document.head.getElementsByClassName('css')[0].setAttribute('href', 'css/mythical_light.css');
     }, [  ]);
 
     if (checkLogged()) {
