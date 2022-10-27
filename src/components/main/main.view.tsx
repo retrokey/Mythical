@@ -5,11 +5,14 @@ import { LoginView } from './login/login.view';
 import { NitroView } from './nitro/nitro.view';
 
 export const MainView: FC<{  }> = props => {
-    const { checkLogged } = SessionHooks();
+    const { onRefresh, checkLogged } = SessionHooks();
 
     useEffect(() => {
         document.head.getElementsByClassName('css')[0].setAttribute('href', 'css/mythical.css');
-    }, [  ]);
+        window.addEventListener('load', () => {
+            onRefresh();
+        });
+    }, [ onRefresh ]);
 
     if (checkLogged()) {
         return (

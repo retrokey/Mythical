@@ -4,9 +4,11 @@ import { Store } from '../store/store.redux';
 import { add, remove, set } from '../store/reducer/session.reducer';
 import { useState } from 'react';
 import { PermissionManager } from '../manager/permission.manager';
+import { PageHooks } from './page.hooks';
 
 const SessionHooksState = () => {
     const permissionManager: PermissionManager = new PermissionManager();
+    const { setNitro } = PageHooks();
     const [ logged, setLogged ] = useState<boolean>(false);
 
     const registerUser = async (json: any) => {
@@ -18,8 +20,8 @@ const SessionHooksState = () => {
         userSession.userInfo.role = json.user.role;
         userSession.userInfo.rank = json.user.rank;
         Store.dispatch(add(userSession));
-        await loadPermission('admin');
         setLogged(true);
+        setNitro();
     }
 
     const loadPermission = async (permission: string) => {
@@ -38,13 +40,13 @@ const SessionHooksState = () => {
     }
 
     const onRefresh = () => {
-        return localStorage.getItem('session') == null ? false : true;
-    }
+        if (localStorage.getItem('session') == null) {
+            return;
+        }
 
-    const setSession = async () => {
         Store.dispatch(set());
-        await loadPermission('admin');
         setLogged(true);
+        setNitro();
     }
 
     const checkLogged = () => {
@@ -55,7 +57,7 @@ const SessionHooksState = () => {
         return getUser().userInfo.permission.get(permission);
     }
 
-    return { registerUser, getUser, removeUser, onRefresh, setSession, checkLogged, checkPermission };
+    return { registerUser, getUser, removeUser, onRefresh, checkLogged, checkPermission };
 }
 
 export const SessionHooks = () => useBetween(SessionHooksState);

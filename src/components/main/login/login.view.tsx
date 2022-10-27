@@ -24,7 +24,6 @@ export const LoginView: FC<{  }> = props => {
             }
     
             registerUser(response.data);
-            setNitro();
         });
     }, [ requestManager, getUser, registerUser, setNitro ]);
 

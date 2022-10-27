@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, ReactElement, useCallback, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ProfileHooks } from '../../../../core/hooks/profile.hooks';
 
@@ -11,6 +11,19 @@ export const ProfileView: FC<{  }> = props => {
 
     const getCurrency = useCallback((type: number) => {
         return (getProfile().currency.has(type) ? getProfile().currency.get(type) : 0).toString();
+    }, [ getProfile ]);
+
+    const friends = useMemo(() => {
+        const items = new Array<ReactElement>();
+
+        for (let friend of getProfile().friends) {
+            items.push(<div className="friend flex flex-col justify-center">
+                <img className="avatar" src={ 'https://imager.bobbaz.fr/avatarimage.php?figure=' + friend.look + '&headonly=1&head_direction=3&size=l' } />
+                <div className="tooltip top-[60px]">{ friend.username }</div>
+            </div>);
+        }
+
+        return items;
     }, [ getProfile ]);
 
     return (
@@ -38,6 +51,12 @@ export const ProfileView: FC<{  }> = props => {
                 <div className="currency flex flex-col items-center justify-center">
                     <div className="amount diamonds">{ getCurrency(5) }</div>
                     <img className="images" src="/images/profile/diamonds.png" />
+                </div>
+            </div>
+            <div className="friends top-[403px] left-[38px]">
+                <div className="title">Friends</div>
+                <div className="bg flex flex-row justify-around top-[35px]">
+                    { friends }
                 </div>
             </div>
         </div>

@@ -30,6 +30,14 @@ const ProfileHooksState = () => {
             currencyMap.set(currency.currencyType, currency.currencyAmount);
         }
         userProfileDefinition.currency = currencyMap;
+        let friends: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
+        for (let friend of response.data.friends) {
+            let friendInfo: UserInfoDefinition = new UserInfoDefinition();
+            friendInfo.look = friend.avatar;
+            friendInfo.username = friend.nickname;
+            friends.push(friendInfo);
+        }
+        userProfileDefinition.friends = friends;
         setUserData(userProfileDefinition);
     }
 
