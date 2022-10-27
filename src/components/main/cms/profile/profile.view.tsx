@@ -17,7 +17,7 @@ export const ProfileView: FC<{  }> = props => {
         const items = new Array<ReactElement>();
 
         for (let friend of getProfile().friends) {
-            items.push(<div className="friend flex flex-col justify-center">
+            items.push(<div key={ friend.username } className="friend flex flex-col justify-center">
                 <img className="avatar" src={ 'https://imager.bobbaz.fr/avatarimage.php?figure=' + friend.look + '&headonly=1&head_direction=3&size=l' } />
                 <div className="tooltip top-[60px]">{ friend.username }</div>
             </div>);

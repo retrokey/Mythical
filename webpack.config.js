@@ -36,6 +36,10 @@ module.exports = {
                     to: path.resolve(__dirname, 'public/images'),
                 },
                 {
+                    from: path.resolve(__dirname, 'src/assets/fonts'),
+                    to: path.resolve(__dirname, 'public/fonts'),
+                },
+                {
                     from: path.resolve(__dirname, 'src/assets/css'),
                     to: path.resolve(__dirname, 'public/css'),
                 }

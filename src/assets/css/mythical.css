@@ -711,6 +711,12 @@ video {
   row-gap: 50px;
 }
 
+@font-face {
+  font-family: 'Inter';
+
+  src: url('/fonts/inter.ttf');
+}
+
 .nitro-container {
   position: absolute;
   height: 100%;
