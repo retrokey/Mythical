@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nitro-container {
+    position: absolute;
+    height: 100%;
+    width: 95%;
+}
+
+.content[data-theme='light'] {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    --backgroundColor: #FFF;
+    --backgroundSidebar: rgba(255, 255, 255, 0.85);
+    --backgroundBack: url('/images/nav/back_light.png');
+    --backgroundProfile: url('/images/nav/profile_light.png');
+    --backgroundStaff: url('/images/nav/staff_light.png');
+    --backgroundNews: url('/images/nav/news_light.png');
+    --backgroundSettings: url('/images/nav/settings_light.png');
+    --textColor: #000;
+}
+
+.content[data-theme='dark'] {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    --backgroundColor: #000;
+    --backgroundSidebar: rgba(39, 39, 42, 0.75);
+    --backgroundBack: url('/images/nav/back_dark.png');
+    --backgroundProfile: url('/images/nav/profile_dark.png');
+    --backgroundStaff: url('/images/nav/staff_dark.png');
+    --backgroundNews: url('/images/nav/news_dark.png');
+    --backgroundSettings: url('/images/nav/settings_dark.png');
+    --textColor: #FFF;
+}
+
+#navigation {
+    position: absolute;
+    background-color: var(--backgroundColor);
+    width: 80px;
+    height: 100%;
+}
+
+#navigation .back {
+    cursor: pointer;
+    position: absolute;
+    background: var(--backgroundBack);
+    width: 14px;
+    height: 8px;
+}
+
+#navigation .profile {
+    cursor: pointer;
+    position: relative;
+    background: var(--backgroundProfile);
+    width: 24px;
+    height: 20px;
+}
+
+#navigation .staff {
+    cursor: pointer;
+    position: relative;
+    background: var(--backgroundStaff);
+    width: 20px;
+    height: 16px;
+}
+
+#navigation .news {
+    cursor: pointer;
+    position: relative;
+    background: var(--backgroundNews);
+    width: 18px;
+    height: 19px;
+}
+
+#navigation .settings {
+    cursor: pointer;
+    position: absolute;
+    background: var(--backgroundSettings);
+    width: 16px;
+    height: 16px;
+}
+
+#sidebar {
+    position: absolute;
+    width: 411px;
+    height: 100%;
+    background-color: var(--backgroundSidebar);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+#sidebar .searchBar {
+    position: absolute;
+    width: 336px;
+    height: 53px;
+    background-color: var(--backgroundColor);
+    border-radius: 10px;
+}
+
+#sidebar .searchBar .icon {
+    position: absolute;
+    width: 18.5px;
+    height: 18.5px;
+    color: var(--textColor);
+}
+
+#sidebar .searchBar .input {
+    position: absolute;
+    width: auto;
+    height: 17px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    outline: none;
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+}
+
+#sidebar .userDetails {
+    position: absolute;
+    width: 281px;
+    height: 220px;
+}
+
+#sidebar .userDetails .avatar {
+    position: absolute;
+    width: 128px;
+    height: 220px;
+}
+
+#sidebar .userDetails .text {
+    position: absolute;
+    width: 75px;
+    height: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: var(--textColor);
+}
+
+#sidebar .userDetails .lastSeen {
+    position: absolute;
+    width: 143px;
+    height: 17px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--textColor);
+}
+
+#sidebar .userDetails .username {
+    position: absolute;
+    width: 79px;
+    height: 31px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
+    color: var(--textColor);
+}
+
+#sidebar .userDetails .motto {
+    position: absolute;
+    width: 138px;
+    height: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: var(--textColor);
+    opacity: 0.9;
+}
+
+#sidebar .currencies {
+    position: absolute;
+    width: 336px;
+    height: 93px;
+}
+
+#sidebar .currencies .currency {
+    position: relative;
+    width: 105px;
+    height: 93px;
+    background: var(--backgroundColor);
+    border-radius: 10px;
+}
+
+#sidebar .currencies .currency .amount {
+    position: relative;
+    width: 54px;
+    height: 19px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+#sidebar .currencies .currency .amount.credits {
+    color: #E9B124;
+}
+
+#sidebar .currencies .currency .amount.duckets {
+    color: #CD7BBF;
+}
+
+#sidebar .currencies .currency .amount.diamonds {
+    color: #4AA78F;
+}
+
+#sidebar .currencies .currency .image {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+

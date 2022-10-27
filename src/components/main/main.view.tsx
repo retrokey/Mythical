@@ -8,14 +8,14 @@ export const MainView: FC<{  }> = props => {
     const { checkLogged } = SessionHooks();
 
     useEffect(() => {
-        document.head.getElementsByClassName('css')[0].setAttribute('href', 'css/mythical_light.css');
+        document.head.getElementsByClassName('css')[0].setAttribute('href', 'css/mythical.css');
     }, [  ]);
 
     if (checkLogged()) {
         return (
             <>
-            <CMSView />
-            <NitroView />
+                <CMSView />
+                <NitroView />
             </>
         );
     } else {

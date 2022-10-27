@@ -16,6 +16,6 @@ export const NitroView: FC<{  }> = props => {
     }, [ getUser, setSSO ]);
 
     return (
-        <iframe src={ configManager.config.mythical.nitro_url + SSO } className="nitro-container"></iframe>
+        <iframe src={ configManager.config.mythical.nitro_url + SSO } className="nitro-container right-0"></iframe>
     );
 }
