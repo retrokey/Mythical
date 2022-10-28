@@ -671,6 +671,58 @@ video {
   top: 35px;
 }
 
+.top-\[560px\] {
+  top: 560px;
+}
+
+.top-\[15x\] {
+  top: 15x;
+}
+
+.top-\[30\%\] {
+  top: 30%;
+}
+
+.top-\[20px\] {
+  top: 20px;
+}
+
+.left-\[30px\] {
+  left: 30px;
+}
+
+.top-\[50px\] {
+  top: 50px;
+}
+
+.left-\[120px\] {
+  left: 120px;
+}
+
+.top-\[70px\] {
+  top: 70px;
+}
+
+.top-\[120px\] {
+  top: 120px;
+}
+
+.left-\[140px\] {
+  left: 140px;
+}
+
+.left-\[290px\] {
+  left: 290px;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
+.top-28 {
+  top: 7rem;
+}
+
 .flex {
   display: flex;
 }
@@ -712,9 +764,37 @@ video {
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
 
-  src: url('/fonts/inter.ttf');
+  src: url('/fonts/Inter-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Inter Medium';
+
+  src: url('/fonts/Inter-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Inter Bold';
+
+  src: url('/fonts/Inter-Bold.ttf');
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0a99e0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #076290;
 }
 
 .nitro-container {
@@ -734,7 +814,9 @@ video {
   --backgroundStaff: url('/images/nav/staff_light.png');
   --backgroundNews: url('/images/nav/news_light.png');
   --backgroundSettings: url('/images/nav/settings_light.png');
-  --textColor: #000;
+  --backgroundUserCount: #F7F7F7;
+  --textColor: #374151;
+  --mottoColor: rgba(55, 65, 81, 0.8);
 }
 
 .content[data-theme='dark'] {
@@ -748,7 +830,9 @@ video {
   --backgroundStaff: url('/images/nav/staff_dark.png');
   --backgroundNews: url('/images/nav/news_dark.png');
   --backgroundSettings: url('/images/nav/settings_dark.png');
+  --backgroundUserCount: #3F3F46;
   --textColor: #FFF;
+  --mottoColor: rgba(255, 255, 255, 0.8);
 }
 
 #navigation {
@@ -802,6 +886,7 @@ video {
   position: absolute;
   width: 411px;
   height: 100%;
+  overflow-y: auto;
   background-color: var(--backgroundSidebar);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -829,7 +914,7 @@ video {
   position: absolute;
   width: auto;
   height: 17px;
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -853,9 +938,9 @@ video {
 
 #sidebar .userDetails .text {
   position: absolute;
-  width: 75px;
+  width: 76px;
   height: 18px;
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
@@ -867,7 +952,7 @@ video {
   position: absolute;
   width: 143px;
   height: 17px;
-  font-family: 'Inter';
+  font-family: 'Inter Medium';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -879,7 +964,7 @@ video {
   position: absolute;
   width: 79px;
   height: 31px;
-  font-family: 'Inter';
+  font-family: 'Inter Bold';
   font-style: normal;
   font-weight: 700;
   font-size: 26px;
@@ -891,7 +976,7 @@ video {
   position: absolute;
   width: 138px;
   height: 18px;
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
   font-style: normal;
   font-weight: 600;
   font-size: 15px;
@@ -919,7 +1004,7 @@ video {
   width: 54px;
   height: 19px;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -948,7 +1033,7 @@ video {
   position: absolute;
   width: 58px;
   height: 19px;
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -962,7 +1047,7 @@ video {
   height: 154px;
 }
 
-#sidebar .bg {
+#sidebar .friends .bg {
   position: absolute;
   width: 327px;
   height: 85px;
@@ -981,7 +1066,7 @@ video {
   position: absolute;
   width: 100%;
   height: 15px;
-  font-family: 'Inter';
+  font-family: 'Inter SemiBold';
   text-align: center;
   font-style: normal;
   font-weight: 600;
@@ -992,4 +1077,183 @@ video {
 
 #sidebar .friends .friend:hover .tooltip {
   display: block;
+}
+
+#sidebar .rooms {
+  position: absolute;
+  width: 327px;
+  height: 266px;
+}
+
+#sidebar .rooms .bg {
+  position: absolute;
+  width: 327px;
+  height: 233px;
+  background: var(--backgroundColor);
+  border-radius: 10px;
+}
+
+#sidebar .rooms .room {
+  position: relative;
+  width: 292px;
+  height: 80px;
+}
+
+#sidebar .rooms .room .thumbnail {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+}
+
+#sidebar .rooms .room .name {
+  position: relative;
+  width: 88px;
+  height: 17px;
+  font-family: 'Inter SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--textColor);
+}
+
+#sidebar .rooms .room .count {
+  position: relative;
+  width: 51px;
+  height: 29px;
+  border-radius: 10px;
+}
+
+#sidebar .rooms .room .count .icon {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: url('/images/profile/count.png');
+}
+
+#sidebar .rooms .room .count .text {
+  position: relative;
+  width: 16px;
+  height: 15px;
+  font-family: 'Inter SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--textColor);
+}
+
+#sidebar .rooms .room .count.not0 {
+  background: #4ADE80;
+}
+
+#sidebar .rooms .room .count.is0 {
+  background: var(--backgroundUserCount);
+}
+
+#sidebar .staffs {
+  position: relative;
+  width: 327px;
+  height: auto;
+}
+
+#sidebar .staffs .no-staff {
+  position: absolute;
+  width: auto;
+  height: 16px;
+  font-family: 'Inter SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--mottoColor);
+}
+
+#sidebar .staffs .staff {
+  position: relative;
+  width: 327px;
+  height: 162px;
+  background: var(--backgroundColor);
+}
+
+#sidebar .staffs .staff:nth-of-type(2) {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#sidebar .staffs .staff:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#sidebar .staffs .staff .details {
+  position: absolute;
+  width: 168px;
+  height: 122px;
+}
+
+#sidebar .staffs .staff .details .username {
+  position: absolute;
+  width: 78px;
+  height: 19px;
+  font-family: 'Inter Bold';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--textColor);
+}
+
+#sidebar .staffs .staff .details .motto {
+  position: absolute;
+  width: 119px;
+  height: 16px;
+  font-family: 'Inter SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--mottoColor);
+}
+
+#sidebar .staffs .staff .details .avatarBg {
+  position: absolute;
+  width: 72px;
+  height: 122px;
+  background: url('/images/staff/avatarBg.png');
+  border-radius: 8px;
+}
+
+#sidebar .staffs .staff .details .avatar {
+  position: absolute;
+  width: 64px;
+  height: 110px;
+}
+
+#sidebar .staffs .staff .rank {
+  position: absolute;
+  width: 65px;
+  height: 16px;
+  font-family: 'Inter SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--textColor);
+}
+
+#sidebar .staffs .staff .status {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 100px;
+}
+
+#sidebar .staffs .staff .status.offline {
+  background: #FF9696;
+}
+
+#sidebar .staffs .staff .status.online {
+  background: #4ADE80;
 }

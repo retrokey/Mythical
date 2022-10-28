@@ -31,7 +31,7 @@ export const NavView: FC<{}> = props => {
             </div>
             <div className="flex flex-col items-center gap-y-[50px]">
                 <div className="profile" onClick={ event => setPage('profile') }></div>
-                <div className="staff"></div>
+                <div className="staff" onClick={ event => setPage('staff') }></div>
                 <div className="news"></div>
             </div>
             <div className="flex flex-col items-center">

@@ -59,6 +59,31 @@ export const ProfileView: FC<{  }> = props => {
                     { friends }
                 </div>
             </div>
+            <div className="rooms top-[560px] left-[38px]">
+                <div className="title">Rooms</div>
+                <div className="bg flex flex-col justify-around top-[35px]">
+                    <div className="room flex justify-around top-[15x]">
+                        <div className="thumbnail">
+                            <img src="/images/profile/thumbnail.png" />
+                        </div>
+                        <div className="name top-[30%]">Test</div>
+                        <div className="count not0 flex justify-around items-center top-[30%]">
+                            <div className="icon"></div>
+                            <div className="text">64</div>
+                        </div>
+                    </div>
+                    <div className="room flex justify-around top-[15x]">
+                        <div className="thumbnail">
+                            <img src="/images/profile/thumbnail.png" />
+                        </div>
+                        <div className="name top-[30%]">Test</div>
+                        <div className="count is0 flex justify-around items-center top-[30%]">
+                            <div className="icon"></div>
+                            <div className="text">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
