@@ -26,6 +26,31 @@ export const ProfileView: FC<{  }> = props => {
         return items;
     }, [ getProfile ]);
 
+    const rooms = useMemo(() => {
+        const items = new Array<ReactElement>();
+
+        for (let room of getProfile().rooms) {
+            let counterClass = '';
+            if (room.count == 0) {
+                counterClass = 'count is0 flex justify-around items-center top-[30%]';
+            } else {
+                counterClass = 'count not0 flex justify-around items-center top-[30%]';
+            }
+            items.push(<div key={ room.name } className="room flex justify-around top-[15x]">
+                <div className="thumbnail">
+                    <img src={ room.thumbnail } />
+                </div>
+                <div className="name top-[30%]">{ room.name }</div>
+                <div className={ counterClass }>
+                    <div className="icon"></div>
+                    <div className="text">{ room.count }</div>
+                </div>
+            </div>);
+        }
+
+        return items;
+    }, [ getProfile ]);
+
     return (
         <div id="sidebar" className="top-0 left-[5%]">
             <div className="searchBar top-4 left-9">
@@ -62,26 +87,7 @@ export const ProfileView: FC<{  }> = props => {
             <div className="rooms top-[560px] left-[38px]">
                 <div className="title">Rooms</div>
                 <div className="bg flex flex-col justify-around top-[35px]">
-                    <div className="room flex justify-around top-[15x]">
-                        <div className="thumbnail">
-                            <img src="/images/profile/thumbnail.png" />
-                        </div>
-                        <div className="name top-[30%]">Test</div>
-                        <div className="count not0 flex justify-around items-center top-[30%]">
-                            <div className="icon"></div>
-                            <div className="text">64</div>
-                        </div>
-                    </div>
-                    <div className="room flex justify-around top-[15x]">
-                        <div className="thumbnail">
-                            <img src="/images/profile/thumbnail.png" />
-                        </div>
-                        <div className="name top-[30%]">Test</div>
-                        <div className="count is0 flex justify-around items-center top-[30%]">
-                            <div className="icon"></div>
-                            <div className="text">0</div>
-                        </div>
-                    </div>
+                    { rooms }
                 </div>
             </div>
         </div>

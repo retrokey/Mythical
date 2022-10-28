@@ -7,6 +7,7 @@
             "mod": "5"
         },
         "api_url": "http://localhost:3002/",
-        "nitro_url": "http://localhost/nitro/nitro.html?sso="
+        "nitro_url": "http://localhost/nitro/nitro.html?sso=",
+        "thumbnail_url": "http://localhost/flash/swf/c_images/camera/thumbnail/"
     }
 }

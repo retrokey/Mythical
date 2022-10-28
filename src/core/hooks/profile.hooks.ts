@@ -3,8 +3,11 @@ import { RequestManager } from '../manager/request.manager';
 import { useState } from 'react';
 import { UserInfoDefinition } from '../definition/user-info.definition';
 import { UserProfileDefinition } from '../definition/user-profile.definition';
+import { RoomProfileDefinition } from '../definition/room-profile.definition';
+import { ConfigManager } from '../manager/config.manager';
 
 const ProfileHooksState = () => {
+    const configManager: ConfigManager = new ConfigManager();
     const requestManager: RequestManager = new RequestManager();
     const [ userData, setUserData ] = useState<UserProfileDefinition>(null);
 
@@ -38,6 +41,23 @@ const ProfileHooksState = () => {
             friends.push(friendInfo);
         }
         userProfileDefinition.friends = friends;
+        let rooms: Array<RoomProfileDefinition> = new Array<RoomProfileDefinition>();
+        for (let room of response.data.rooms) {
+            let roomInfo: RoomProfileDefinition = new RoomProfileDefinition();
+            roomInfo.id = room.id;
+            roomInfo.name = room.roomName;
+            roomInfo.count = room.usersCount;
+            const result = await requestManager.thumbnail('1.png');
+            if (result.ok) {
+                roomInfo.thumbnail = configManager.config.mythical.thumbnail_url + room.id + '.png';
+            } else {
+                roomInfo.thumbnail = '/images/profile/thumbnail.png';
+            }
+            rooms.push(roomInfo);
+        }
+        userProfileDefinition.rooms = rooms;
+        const result = await requestManager.thumbnail('1.png');
+        console.log(result.ok);
         setUserData(userProfileDefinition);
     }
 
