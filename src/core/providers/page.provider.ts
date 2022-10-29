@@ -7,7 +7,6 @@ const page = () => {
     const title = (title: string) => {
         document.title = 'Mythical - ' + title;
     }
-
     const change = (page: string) => {
         setPageNow(page);
     }

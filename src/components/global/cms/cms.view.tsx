@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { PageProvider } from '../../../core/providers/page.provider';
 import { NavigationView } from './navigation/navigation.view';
 import { NewsView } from './news/news.view';
+import { NitroView } from './nitro/nitro.view';
 import { ProfileView } from './profile/profile.view';
 import { StaffView } from './staff/staff.view';
 
@@ -14,6 +15,7 @@ export const CMSView: FC<{  }> = props => {
         { check('profile') && <ProfileView /> }
         { check('staff') && <StaffView /> }
         { check('news') && <NewsView /> }
+        <NitroView />
     </div>
     );
 }

@@ -13,7 +13,7 @@ const session = () => {
     }
 
     const onRefresh = () => {
-        if (localStorage.getItem('session') == null) {
+        if (JSON.parse(localStorage.getItem('session')) == null) {
             setLogged(false);
             return;
         }
