@@ -1,0 +1,11 @@
+{
+    "name": "Mythical",
+    "ranks": {
+        "fou": "7",
+        "adm": "6",
+        "mod": "5"
+    },
+    "api_url": "http://localhost:3002/",
+    "nitro_url": "http://localhost/nitro/nitro.html?sso=",
+    "thumbnail_url": "http://localhost/flash/swf/c_images/camera/thumbnail/"
+}
