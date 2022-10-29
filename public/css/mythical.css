@@ -599,16 +599,20 @@ video {
   bottom: 1.25rem;
 }
 
+.left-20 {
+  left: 5rem;
+}
+
 .top-15px {
   top: 15px;
 }
 
-.top-30\% {
-  top: 30%;
+.top-50px {
+  top: 50px;
 }
 
-.left-20 {
-  left: 5rem;
+.top-30\% {
+  top: 30%;
 }
 
 .left-4 {
@@ -667,16 +671,12 @@ video {
   left: 140px;
 }
 
-.left-290px {
-  left: 290px;
-}
-
 .top-125px {
   top: 125px;
 }
 
-.top-36 {
-  top: 9rem;
+.left-290px {
+  left: 290px;
 }
 
 .top-40 {
@@ -727,6 +727,10 @@ video {
   height: 19px;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .h-15px {
   height: 15px;
 }
@@ -775,10 +779,6 @@ video {
   height: 93px;
 }
 
-.h-40px {
-  height: 40px;
-}
-
 .h-154px {
   height: 154px;
 }
@@ -811,16 +811,36 @@ video {
   height: 12px;
 }
 
-.h-auto {
-  height: auto;
+.h-\[16px\] {
+  height: 16px;
+}
+
+.h-\[48px\] {
+  height: 48px;
+}
+
+.h-\[40px\] {
+  height: 40px;
+}
+
+.h-\[32px\] {
+  height: 32px;
+}
+
+.h-\[38px\] {
+  height: 38px;
+}
+
+.h-\[2px\] {
+  height: 2px;
 }
 
 .w-screen {
   width: 100vw;
 }
 
-.w-415px {
-  width: 415px;
+.w-411px {
+  width: 411px;
 }
 
 .w-80 {
@@ -887,10 +907,6 @@ video {
   width: 83.333333%;
 }
 
-.w-281px {
-  width: 281px;
-}
-
 .w-128px {
   width: 128px;
 }
@@ -909,10 +925,6 @@ video {
 
 .w-54px {
   width: 54px;
-}
-
-.w-40px {
-  width: 40px;
 }
 
 .w-327px {
@@ -935,6 +947,34 @@ video {
   width: 12px;
 }
 
+.w-\[14px\] {
+  width: 14px;
+}
+
+.w-\[24px\] {
+  width: 24px;
+}
+
+.w-\[28px\] {
+  width: 28px;
+}
+
+.w-\[48px\] {
+  width: 48px;
+}
+
+.w-\[40px\] {
+  width: 40px;
+}
+
+.w-\[36px\] {
+  width: 36px;
+}
+
+.w-\[32px\] {
+  width: 32px;
+}
+
 .select-none {
   -webkit-user-select: none;
           user-select: none;
@@ -946,10 +986,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 .items-center {
@@ -1064,6 +1100,18 @@ video {
   background-image: url(/images/profile/search.png);
 }
 
+.bg-credits-url {
+  background-image: url(/images/profile/credits.png);
+}
+
+.bg-duckets-url {
+  background-image: url(/images/profile/duckets.png);
+}
+
+.bg-diamonds-url {
+  background-image: url(/images/profile/diamonds.png);
+}
+
 .bg-staff-bg {
   background-image: url(/images/staff/avatarBg.png);
 }
@@ -1104,8 +1152,8 @@ video {
   font-weight: 700;
 }
 
-.not-italic {
-  font-style: normal;
+.leading-19px {
+  line-height: 19px;
 }
 
 .leading-15px {
@@ -1122,10 +1170,6 @@ video {
 
 .leading-18px {
   line-height: 18px;
-}
-
-.leading-19px {
-  line-height: 19px;
 }
 
 .leading-16px {

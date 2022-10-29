@@ -25,7 +25,7 @@ module.exports = {
             },
             width: {
                 '7px': '7px',
-                '415px': '415px',
+                '411px': '411px',
                 '12px': '12px',
                 '90%': '90%',
                 '14px': '14px',
@@ -35,7 +35,6 @@ module.exports = {
                 '18px': '18px',
                 '336px': '336px',
                 '24px': '24px',
-                '281px': '281px',
                 '128px': '128px',
                 '79px': '79px',
                 '138px': '138px',
@@ -68,6 +67,7 @@ module.exports = {
                 '25px': '25px',
                 '45px': '45px',
                 '12px': '12px',
+                '50px': '50px',
                 '30%': '30%'
             },
             height: {
@@ -136,7 +136,10 @@ module.exports = {
                 'settings-dark': 'url(/images/nav/settings_dark.png)',
                 'search': 'url(/images/profile/search.png)',
                 'count': 'url(/images/profile/count.png)',
-                'staff-bg': 'url(/images/staff/avatarBg.png)'
+                'staff-bg': 'url(/images/staff/avatarBg.png)',
+                'credits-url': 'url(/images/profile/credits.png)',
+                'duckets-url': 'url(/images/profile/duckets.png)',
+                'diamonds-url': 'url(/images/profile/diamonds.png)'
             },
             zIndex: {
                 '2': '2'
