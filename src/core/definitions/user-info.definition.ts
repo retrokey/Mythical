@@ -1,7 +1,7 @@
 export class UserInfoDefinition {
     public id = 0;
     public username: string = 'Guest';
-    public SSO: string = null;
+    public SSO: string = '';
     public look: string = '';
     public motto: string = 'Welcome!';
     public role: string = 'Nothing';

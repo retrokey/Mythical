@@ -26,8 +26,10 @@ export const LoginView: FC<{  }> = props => {
 
             let json = response.data;
             let userSession: UserSessionDefinition = new UserSessionDefinition();
+            console.log(json);
+            userSession.userInfo.id = json.user.id;
             userSession.userInfo.username = json.user.nickname;
-            userSession.userInfo.SSO = json.sso;
+            userSession.userInfo.SSO = json.user.SSO;
             userSession.userInfo.look = json.user.avatar;
             userSession.userInfo.motto = json.user.mission;
             userSession.userInfo.role = json.user.role;
