@@ -43,7 +43,7 @@ export const NavigationView: FC<{}> = props => {
             <div className="flex flex-col items-center">
                 <div className="absolute bg-back-light dark:bg-back-dark w-[28px] h-[16px] top-5" onClick={ event => setNitro() }></div>
             </div>
-            <div className="flex flex-col items-center gap-y-50px">
+            <div className="flex flex-col items-center gap-y-[50px]">
                 <div className="relative bg-profile-light dark:bg-profile-dark w-[48px] h-[40px]" onClick={ event => setPage('profile') }></div>
                 <div className="relative bg-staff-light dark:bg-staff-dark w-[40px] h-[32px]" onClick={ event => setPage('staff') }></div>
                 <div className="relative bg-news-light dark:bg-news-dark w-[36px] h-[38px]" onClick={ event => setPage('news') }></div>

@@ -50,14 +50,18 @@ export const LoginView: FC<{  }> = props => {
         title('Welcome!');
     }, [ title ]);
  
-    return (<div className="bg-gray dark:bg-gray bg-opacity-75 w-screen h-screen">
-        <div className="absolute bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-10px w-411px h-screen">
-            <div className="absolute top-12 left-12 font-inter font-semibold text-black dark:text-white text-16px">Welcome</div>
-            <div className="absolute top-20 left-12 bg-white dark:bg-black w-80 h-40 flex flex-col items-center rounded-10px">
-                <input ref={ username } placeholder="Username" type="text" className="absolute w-90% h-14 top-4 text-center placeholder:text-white dark:placeholder:text-black bg-black text-white bg-opacity-75 dark:bg-opacity-75 dark:bg-white dark:text-black outline-none" />
-                <input ref={ password } placeholder="Password" type="password" className="absolute w-90% h-14 top-20 text-center placeholder:text-white dark:placeholder:text-black bg-black text-white bg-opacity-75 dark:bg-opacity-75 dark:bg-white dark:text-black outline-none" />
+    return (<div className="bg-gradient bg-opacity-75 w-screen h-screen">
+        <div className="absolute bg-drape left-0 top-0 w-[145px] h-[200px]"></div>
+        <div className="absolute bg-left left-0 bottom-0 w-[403px] h-[390px]"></div>
+        <div className="absolute bg-right right-0 bottom-0 w-[484px] h-[463px]"></div>
+        <div className="absolute bg-right right-0 bottom-0 w-[484px] h-[463px]"></div>
+        <div className="absolute w-[415px] h-auto rounded-[10px] bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-60 p-3 top-1/4 left-1/3 flex flex-col items-center justify-between">
+            <div className="relative font-inter font-semibold text-black dark:text-white text-16px">Welcome</div>
+            <div className="relative w-80 h-40 flex flex-col items-center justify-around">
+                <input ref={ username } placeholder="Username" type="text" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[20px] text-center outline-none" />
+                <input ref={ password } placeholder="Password" type="password" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[20px] text-center outline-none" />
             </div>
-            <button onKeyDown={ event => keyDown(event) } onClick={ event => submit() } className="absolute w-80 h-12 top-64 rounded-10px left-12 text-black dark:text-white bg-yellow">Enter</button>
+            <button onKeyDown={ event => keyDown(event) } onClick={ event => submit() } className="relative w-80 h-12 rounded-[20px] text-black dark:text-white bg-yellow">Enter</button>
         </div>
     </div>);
 }
