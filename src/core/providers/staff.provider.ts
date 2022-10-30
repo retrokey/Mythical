@@ -6,15 +6,15 @@ import { ConfigManager } from '../manager/config.manager';
 import { RequestManager } from '../manager/request.manager';
 
 const staff = () => {
-    const [ request, setRequest ] = useState<RequestManager>(new RequestManager());
-    const [ config, setConfig ] = useState<ConfigManager>(new ConfigManager());
+    const requestManager: RequestManager = new RequestManager();
+    const configManager: ConfigManager = new ConfigManager();
     const [ staffList, setStaffList ] = useState<StaffListDefinition>(null);
 
     const setStaff = async () => {
         let staffList: StaffListDefinition = new StaffListDefinition();
-        let ranks: any = config.get<object>('ranks');
+        let ranks: any = configManager.config.ranks;
 
-        let founderResponse: any = await request.get('user/rank/' + ranks.fou, {
+        let founderResponse: any = await requestManager.get('user/rank/' + ranks.fou, {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         });
@@ -34,7 +34,7 @@ const staff = () => {
             staffList.fou = founderArray;
         }
 
-        let adminResponse: any = await request.get('user/rank/' + ranks.adm, {
+        let adminResponse: any = await requestManager.get('user/rank/' + ranks.adm, {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         });
@@ -54,7 +54,7 @@ const staff = () => {
             staffList.adm = admArray;
         }
 
-        let modResponse: any = await request.get('user/rank/' + ranks.mod, {
+        let modResponse: any = await requestManager.get('user/rank/' + ranks.mod, {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         });

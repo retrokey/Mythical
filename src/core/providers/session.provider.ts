@@ -9,23 +9,23 @@ const session = () => {
     const registerUser = (userSession: UserSessionDefinition) => {
         setUserSession(userSession);
         setLogged(true);
-        localStorage.setItem('session', JSON.stringify(userSession));
+        sessionStorage.setItem('session', JSON.stringify(userSession));
     }
 
     const onRefresh = () => {
-        if (JSON.parse(localStorage.getItem('session')) == null) {
+        if (JSON.parse(sessionStorage.getItem('session')) == null) {
             setLogged(false);
             return;
         }
 
-        let userSession: UserSessionDefinition = JSON.parse(localStorage.getItem('session'));
+        let userSession: UserSessionDefinition = JSON.parse(sessionStorage.getItem('session'));
         setUserSession(userSession);
         setLogged(true);
     }
 
 
     const removeUser = () => {
-        localStorage.removeItem('session');
+        sessionStorage.removeItem('session');
         setUserSession(null);
     }
 

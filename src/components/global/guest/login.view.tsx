@@ -48,7 +48,7 @@ export const LoginView: FC<{  }> = props => {
 
     useEffect(() => {
         title('Welcome!');
-    }, [ title ]);
+    }, [  ]);
  
     return (<div className="bg-gradient bg-opacity-75 w-screen h-screen">
         <div className="absolute bg-drape left-0 top-0 w-[145px] h-[200px]"></div>
@@ -58,10 +58,10 @@ export const LoginView: FC<{  }> = props => {
         <div className="absolute w-[415px] h-auto rounded-[10px] bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-60 p-3 top-1/4 left-1/3 flex flex-col items-center justify-between">
             <div className="relative font-inter font-semibold text-black dark:text-white text-16px">Welcome</div>
             <div className="relative w-80 h-40 flex flex-col items-center justify-around">
-                <input ref={ username } placeholder="Username" type="text" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[20px] text-center outline-none" />
-                <input ref={ password } placeholder="Password" type="password" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[20px] text-center outline-none" />
+                <input ref={ username } placeholder="Username" type="text" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[8px] text-center outline-none" />
+                <input ref={ password } placeholder="Password" type="password" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[8px] text-center outline-none" />
             </div>
-            <button onKeyDown={ event => keyDown(event) } onClick={ event => submit() } className="relative w-80 h-12 rounded-[20px] text-black dark:text-white bg-yellow">Enter</button>
+            <button onKeyDown={ event => keyDown(event) } onClick={ event => submit() } className="relative w-80 h-12 rounded-[8px] text-black dark:text-white bg-yellow">Enter</button>
         </div>
     </div>);
 }

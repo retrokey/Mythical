@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useBetween } from 'use-between';
+import { ConfigManager } from '../manager/config.manager';
 
 const page = () => {
+    const configManager: ConfigManager = new ConfigManager();
     const [ pageNow, setPageNow] = useState<string>('');
 
     const title = (title: string) => {
-        document.title = 'Mythical - ' + title;
+        document.title = configManager.config.name + ' - ' + title;
     }
     const change = (page: string) => {
         setPageNow(page);
