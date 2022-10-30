@@ -1,11 +1,14 @@
 import { FC, useEffect } from 'react';
 import { ConfigManager } from '../../core/manager/config.manager';
+import { PageProvider } from '../../core/providers/page.provider';
 import { SessionProvider } from '../../core/providers/session.provider';
 import { CMSView } from './cms/cms.view';
 import { LoginView } from './guest/login.view';
+import { RegistrationView } from './guest/registration.view';
 
 export const Global: FC<{  }> = props => {
     const { getLogged, onRefresh } = SessionProvider();
+    const { check } = PageProvider();
 
     useEffect(() => {
         onRefresh();
@@ -15,7 +18,9 @@ export const Global: FC<{  }> = props => {
         return (<>
             <CMSView />
         </>);
-    } else {
+    } else if (!getLogged() && check('')) {
         return (<LoginView />);
+    } else if (!getLogged() && check('registration')) {
+        return (<RegistrationView />)
     }
 }

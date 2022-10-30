@@ -1,23 +1,26 @@
-import { FC, useCallback, useEffect, useRef, KeyboardEvent } from 'react';
+import { FC, useCallback, useRef, KeyboardEvent } from 'react';
 import { UserSessionDefinition } from '../../../core/definitions/user-session.definition';
 import { RequestManager } from '../../../core/manager/request.manager';
 import { PageProvider } from '../../../core/providers/page.provider';
 import { SessionProvider } from '../../../core/providers/session.provider';
 
-export const LoginView: FC<{  }> = props => {
+export const RegistrationView: FC<{  }> = props => {
     const { title, change } = PageProvider();
     const requestManager: RequestManager = new RequestManager();
     const { registerUser } = SessionProvider();
     const username = useRef<HTMLInputElement>();
+    const mail = useRef<HTMLInputElement>();
     const password = useRef<HTMLInputElement>();
 
-    const requestLogin = useCallback((user: string, psw: string) => {
-        requestManager.post('user/find', {
+
+    const requestRegistration = useCallback((user: string, psw: string, mail: string) => {
+        requestManager.post('user/new', {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         }, {
             username: user,
-            password: psw
+            password: psw,
+            mail: mail
         })
         .then((response) => {        
             if (response.status != 'success') {
@@ -37,25 +40,21 @@ export const LoginView: FC<{  }> = props => {
         });
     }, [ registerUser ]);
 
-    const openRegistration = useCallback(() => {
-        title('Registration')
-        change('registration');
-    }, [ title, change ]);
-
     const submit = useCallback(() => {
-        requestLogin(username.current.value, password.current.value);
-    }, [ username, password, requestLogin ]);
+        requestRegistration(username.current.value, password.current.value, mail.current.value);
+    }, [ username, password, requestRegistration ]);
 
     const keyDown = useCallback((event: KeyboardEvent) => {
         if (event.key == 'Enter' || event.key  == 'NumpadEnter') {
-            requestLogin(username.current.value, password.current.value);
+            requestRegistration(username.current.value, password.current.value, mail.current.value);
         }
-    }, [ username, password, requestLogin ]);
+    }, [ username, password, requestRegistration ]);
 
-    useEffect(() => {
-        title('Welcome!');
-    }, [  ]);
- 
+    const closeRegistration = useCallback(() => {
+        title('Welcome!')
+        change('');
+    }, [ title, change ]);
+
     return (<div className="bg-gradient bg-opacity-75 w-screen h-screen">
         <div className="absolute bg-drape left-0 top-0 w-[145px] h-[200px]"></div>
         <div className="absolute bg-left left-0 bottom-0 w-[403px] h-[390px]"></div>
@@ -63,13 +62,14 @@ export const LoginView: FC<{  }> = props => {
         <div className="absolute bg-right right-0 bottom-0 w-[484px] h-[463px]"></div>
         <div className="absolute w-[415px] h-auto rounded-[10px] bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-60 p-3 top-1/4 left-1/3 flex flex-col items-center justify-between">
             <div className="relative font-inter font-semibold text-black dark:text-white text-16px">Welcome</div>
-            <div className="relative w-80 h-40 flex flex-col items-center justify-around">
+            <div className="relative w-80 h-60 flex flex-col items-center justify-around">
                 <input ref={ username } placeholder="Username" type="text" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[8px] text-center outline-none" />
+                <input ref={ mail } placeholder="Email" type="text" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[8px] text-center outline-none" />
                 <input ref={ password } onKeyDown={ event => keyDown(event) } placeholder="Password" type="password" className="relative bg-black dark:bg-white placeholder:text-white dark:placeholder:text-black text-white dark:text-black w-full h-14 rounded-[8px] text-center outline-none" />
             </div>
             <div className="relative w-80 h-28 flex flex-col items-center justify-around">
-                <button onKeyDown={ event => keyDown(event) } onClick={ event => submit() } className="relative w-80 h-12 rounded-[8px] text-black dark:text-white bg-yellow">Enter</button>
-                <button onClick={ event => openRegistration() } className="relative w-80 h-12 rounded-[8px] text-black dark:text-white bg-gray">Registration</button>
+                <button onKeyDown={ event => keyDown(event) } onClick={ event => submit() } className="relative w-80 h-12 rounded-[8px] text-black dark:text-white bg-yellow">Registration</button>
+                <button onClick={ event => closeRegistration() } className="relative w-80 h-12 rounded-[8px] text-black dark:text-white bg-gray">Return to Login</button>
             </div>
         </div>
     </div>);
