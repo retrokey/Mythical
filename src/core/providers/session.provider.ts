@@ -25,6 +25,7 @@ const session = () => {
 
 
     const removeUser = () => {
+        setLogged(false);
         sessionStorage.removeItem('session');
         setUserSession(null);
     }

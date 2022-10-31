@@ -38,7 +38,7 @@ export const LoginView: FC<{  }> = props => {
     }, [ registerUser ]);
 
     const openRegistration = useCallback(() => {
-        title('Registration')
+        title('Registration');
         change('registration');
     }, [ title, change ]);
 

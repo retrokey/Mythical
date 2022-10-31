@@ -35,6 +35,10 @@ module.exports = {
             fontFamily: {
                 'inter': ['Inter']
             },
+            boxShadow: {
+                'dc': 'inset -1px -1px #5a556a',
+                'adm': 'inset -1px -1px #b04238'
+            },
             colors: {
                 'gray': '#98AABF',
                 'white': '#FFFFFF',
@@ -47,7 +51,9 @@ module.exports = {
                 'count-light': '#F7F7F7',
                 'count-dark': '#3F3F46',
                 'offline': '#FF9696',
-                'online': '#4ADE80'
+                'online': '#4ADE80',
+                'purple': '#716A85',
+                'red': '#DD5246'
             },
             backgroundImage: {
                 'gradient': 'url(/images/guest/gradient.png)',
