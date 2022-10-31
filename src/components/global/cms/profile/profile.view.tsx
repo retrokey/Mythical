@@ -23,7 +23,7 @@ export const ProfileView: FC<{  }> = props => {
 
         for (let friend of read().friends) {
             items.push(<div key={ friend.username } className="group relative flex flex-col justify-center top-[15px]">
-                <img src={ 'https://imager.bobbaz.fr/avatarimage.php?figure=' + friend.look + '&headonly=1&head_direction=3&size=l' } />
+                <img src={ 'https://imager.bobbaz.fr/avatarimage.php?figure=' + friend.look + '&headonly=1&head_direction=3' } />
                 <div className="absolute text-black dark:text-white hidden w-full group-hover:block font-inter text-center font-semibold h-[15px] leading-[15px] text-[12px] top-[50px]">{ friend.username }</div>
             </div>);
         }
