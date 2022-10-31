@@ -7,6 +7,6 @@ export const NitroView: FC<{  }> = props => {
     const { getUser } = SessionProvider();
 
     return (
-        <iframe className="absolute right-0 w-[95%] h-screen" src={ configManager.config.nitro_url + getUser().userInfo.SSO }></iframe>
+        <iframe className="absolute laptop:h-screen laptop:w-[94.2%] laptop:right-0 mobileSmall:w-screen mobileSmall:h-[95.1%] tablet:h-[89%] mobileSmall:bottom-0" src={ configManager.config.nitro_url + getUser().userInfo.SSO }></iframe>
     );
 }

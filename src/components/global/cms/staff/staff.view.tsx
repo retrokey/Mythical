@@ -1,5 +1,6 @@
 import { FC, ReactElement, useMemo } from 'react';
 import { StaffProvider } from '../../../../core/providers/staff.provider';
+import { SidebarView } from '../../../base/sidebar.base';
 
 export const StaffView: FC<{  }> = props => {
     const { getStaff } = StaffProvider();
@@ -82,7 +83,7 @@ export const StaffView: FC<{  }> = props => {
     }, [ getStaff ]);
 
     return (
-    <div className="absolute top-0 left-20 w-[411px] h-screen overflow-y-auto bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-[10px] z-[2] backdrop-blur-[5px]">
+    <SidebarView>
         <div className="relative w-full h-auto top-5">
             <div className="relative h-[19px] top-0 font-inter font-semibold text-[16px] text-center leading-[19px]">Founders</div>
             <div className="relative top-5 flex flex-col items-center">
@@ -101,6 +102,6 @@ export const StaffView: FC<{  }> = props => {
                 { moderator }
             </div>
         </div>
-    </div>
+    </SidebarView>
     );
 }

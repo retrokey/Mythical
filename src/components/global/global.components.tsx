@@ -1,5 +1,4 @@
 import { FC, useEffect } from 'react';
-import { ConfigManager } from '../../core/manager/config.manager';
 import { PageProvider } from '../../core/providers/page.provider';
 import { SessionProvider } from '../../core/providers/session.provider';
 import { CMSView } from './cms/cms.view';

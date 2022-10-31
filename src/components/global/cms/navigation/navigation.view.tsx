@@ -39,17 +39,17 @@ export const NavigationView: FC<{}> = props => {
     }, [ change, title ]);
 
     return (
-        <div className="absolute top-0 left-0 w-20 h-screen bg-white dark:bg-black flex flex-col justify-between">
-            <div className="flex flex-col items-center">
-                <div className="absolute bg-back-light dark:bg-back-dark w-[28px] h-[16px] top-5" onClick={ event => setNitro() }></div>
+        <div className="absolute top-0 left-0 bg-white dark:bg-black flex justify-between laptop:flex-col laptop:w-[5.8%] laptop:h-screen mobileSmall:flex-row mobileSmall:w-screen mobileSmall:h-[10.9%]">
+            <div className="flex items-center mobileSmall:flex-row laptop:flex-col">
+                <div className="relative bg-back-light dark:bg-back-dark w-[28px] h-[16px] mobileSmall:left-5 laptop:left-0 laptop:top-5" onClick={ event => setNitro() }></div>
             </div>
-            <div className="flex flex-col items-center gap-y-[50px]">
+            <div className="flex items-center mobileLarge:flex-row mobileSmall:gap-x-[50px] laptop:flex-col laptop:gap-y-[50px]">
                 <div className="relative bg-profile-light dark:bg-profile-dark w-[48px] h-[40px]" onClick={ event => setPage('profile') }></div>
                 <div className="relative bg-staff-light dark:bg-staff-dark w-[40px] h-[32px]" onClick={ event => setPage('staff') }></div>
                 <div className="relative bg-news-light dark:bg-news-dark w-[36px] h-[38px]" onClick={ event => setPage('news') }></div>
             </div>
-            <div className="flex flex-col items-center">
-                <div className="absolute bg-settings-light dark:bg-settings-dark w-[32px] h-[32px] bottom-5"></div>
+            <div className="flex items-center mobileSmall:flex-row laptop:flex-col">
+                <div className="relative bg-settings-light dark:bg-settings-dark w-[32px] h-[32px] mobileSmall:right-5 laptop:right-0 laptop:bottom-5"></div>
             </div>
         </div>
     );

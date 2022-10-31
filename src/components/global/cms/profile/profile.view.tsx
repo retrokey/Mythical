@@ -1,5 +1,6 @@
 import { FC, ReactElement, useCallback, useMemo } from 'react';
 import { ProfileProvider } from '../../../../core/providers/profile.provider';
+import { SidebarView } from '../../../base/sidebar.base';
 
 export const ProfileView: FC<{  }> = props => {
     const { getProfile } = ProfileProvider();
@@ -49,7 +50,7 @@ export const ProfileView: FC<{  }> = props => {
     }, [ getProfile ]);
 
     return (
-    <div className="absolute flex flex-col items-center top-0 left-20 w-[411px] h-screen overflow-y-auto bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-[10px] z-[2] backdrop-blur-[5px]">
+    <SidebarView>
         <div className="absolute top-5 rounded-[10px] w-[336px] h-[53px] bg-white dark:bg-black">
             <div className="absolute w-[24px] h-[24px] left-4 top-4 bg-search"></div>
             <input className="absolute outline-none w-5/6 h-[17px] leading-[17px] dark:bg-black text-black bg-white dark:text-white font-inter font-semibold text-[14px] left-12 top-5" type="text"  placeholder="Search users..." />
@@ -91,6 +92,6 @@ export const ProfileView: FC<{  }> = props => {
                 { rooms }
             </div>
         </div>
-    </div>
+    </SidebarView>
     );
 }

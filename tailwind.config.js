@@ -5,6 +5,29 @@ module.exports = {
     ],
     darkMode: 'class',
     theme: {
+        screens: {
+            mobileSmall: {
+                'raw': '(min-width: 320px)'
+            },
+            mobileMedium: {
+                'raw': '(min-width: 320px)'
+            },
+            mobileLarge: {
+                'raw': '(min-width: 425px)'
+            },
+            tablet: {
+                'raw': '(min-width: 768px)'
+            },
+            laptop: {
+                'raw': '(min-width: 1024px)'
+            },
+            laptopLarge: {
+                'raw': '(min-width: 1440px)'
+            },
+            ultra: {
+                'raw': '(min-width: 2560px)'
+            }
+        },
         fontFamily: {
             'inter': ['Inter']
         },
@@ -49,12 +72,6 @@ module.exports = {
                 'diamonds-url': 'url(/images/profile/diamonds.png)'
             }
         },
-        screens: {
-            sm: '480px',
-            md: '768px',
-            lg: '976px',
-            xl: '1440px'
-        }
     },
     plugins: []
 }
