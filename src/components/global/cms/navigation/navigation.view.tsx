@@ -44,7 +44,7 @@ export const NavigationView: FC<{}> = props => {
     }, [ change, title ]);
 
     return (
-        <div className="absolute top-0 left-0 bg-white dark:bg-black flex justify-between laptop:flex-col laptop:w-[5.8%] laptop:h-screen mobileSmall:flex-row mobileSmall:w-screen mobileSmall:h-[10.9%]">
+        <div className="absolute top-0 left-0 bg-white dark:bg-black flex justify-between laptop:flex-col laptop:w-[80px] laptop:h-screen mobileSmall:flex-row mobileSmall:w-screen mobileSmall:h-[10.9%]">
             <div className="flex items-center mobileSmall:flex-row laptop:flex-col">
                 <div className="relative cursor-pointer bg-back-light dark:bg-back-dark w-[28px] h-[16px] mobileSmall:left-5 laptop:left-0 laptop:top-5" onClick={ event => setNitro() }></div>
             </div>

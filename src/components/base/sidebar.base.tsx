@@ -1,8 +1,20 @@
 import { FC, PropsWithChildren } from 'react';
 
-export const SidebarView: FC<PropsWithChildren<{  }>> = props => {
+interface SidebarProps {
+    classList: string;
+}
+
+export const SidebarView: FC<PropsWithChildren<SidebarProps>> = props => {
     return (
-    <div className="absolute flex flex-col items-center laptop:top-0 laptop:left-[5.8%] mobileSmall:h-[89%] mobileSmall:top-[10.8%] w-[411px] laptop:h-screen overflow-y-auto bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-[10px] z-[2] backdrop-blur-[5px]">
+    <div className={ props.classList }>
+        { props.children }
+    </div>
+    );
+}
+
+export const ExtraSidebarView: FC<PropsWithChildren<SidebarProps>> = props => {
+    return (
+    <div className={ props.classList }>
         { props.children }
     </div>
     );

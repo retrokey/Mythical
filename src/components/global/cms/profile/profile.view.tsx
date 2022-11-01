@@ -71,7 +71,7 @@ export const ProfileView: FC<{  }> = props => {
     }, [ setProfile ]);
 
     return (
-    <SidebarView>
+    <SidebarView classList={ "absolute flex flex-col items-center mobileSmall:h-[89%] mobileSmall:top-[10.8%] laptop:w-[411px] laptop:h-screen laptop:top-0 laptop:left-[80px] overflow-y-auto bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-[10px] z-[2] backdrop-blur-[5px]" }>
         <div className="absolute top-5 rounded-[10px] w-[336px] h-[53px] bg-white dark:bg-black">
             <div className="absolute w-[24px] h-[24px] left-4 top-4 bg-search"></div>
             <input ref={ username } onKeyDown={ event => search(event) } className="absolute outline-none w-5/6 h-[17px] leading-[17px] dark:bg-black text-black bg-white dark:text-white font-inter font-semibold text-[14px] left-12 top-5" type="text"  placeholder="Search users..." />
