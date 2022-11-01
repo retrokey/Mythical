@@ -7,26 +7,24 @@ const session = () => {
     let [ userSession, setUserSession ] = useState<UserSessionDefinition>(new UserSessionDefinition());
 
     const registerUser = (userSession: UserSessionDefinition) => {
+        console.log(userSession);
         setUserSession(userSession);
         setLogged(true);
-        sessionStorage.setItem('session', JSON.stringify(userSession));
+        localStorage.setItem('session', userSession.token);
     }
 
     const onRefresh = () => {
-        if (JSON.parse(sessionStorage.getItem('session')) == null) {
+        if (localStorage.getItem('session') == undefined) {
             setLogged(false);
             return;
         }
 
-        let userSession: UserSessionDefinition = JSON.parse(sessionStorage.getItem('session'));
-        setUserSession(userSession);
-        setLogged(true);
+        return localStorage.getItem('session');
     }
-
 
     const removeUser = () => {
         setLogged(false);
-        sessionStorage.removeItem('session');
+        localStorage.removeItem('session');
         setUserSession(null);
     }
 
