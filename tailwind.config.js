@@ -75,7 +75,9 @@ module.exports = {
                 'staff-bg': 'url(/images/staff/avatarBg.png)',
                 'credits-url': 'url(/images/profile/credits.png)',
                 'duckets-url': 'url(/images/profile/duckets.png)',
-                'diamonds-url': 'url(/images/profile/diamonds.png)'
+                'diamonds-url': 'url(/images/profile/diamonds.png)',
+                'arrow-light': 'url(/images/news/arrow_light.png)',
+                'arrow-dark': 'url(/images/news/arrow_dark.png)'
             }
         },
     },

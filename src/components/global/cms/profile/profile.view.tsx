@@ -79,7 +79,7 @@ export const ProfileView: FC<{  }> = props => {
         <div className="absolute top-12 w-full h-[220px]">
             <img className="absolute w-[128px] h-full left-0" src={ "https://imager.bobbaz.fr/avatarimage.php?figure=" + read().userInfo.look +  "&direction=2&head_direction=3&gesture=sml&action=wav&size=l" } />
             <div className="text-black dark:text-white absolute w-[79px] left-32 top-[86px] h-[31px] font-inter font-bold text-[26px] leading-[31px]">{ read().userInfo.username }</div>
-            <div className="text-black dark:text-white absolute w-[138px] h-[18px] top-[120px] left-32 leading-[18px] font-inter font-semibold text-[15px] opacity-90">{ read().userInfo.motto }</div>
+            <div className="text-black dark:text-white absolute w-[138px] h-[18px] top-[120px] left-32 leading-[18px] font-inter font-semibold text-[15px] text-opacity-80">{ read().userInfo.motto }</div>
         </div>
         <div className="absolute w-[336px] h-[93px] top-[230px] flex justify-between ">
             <div className="relative w-[105px] h-full flex flex-col items-center justify-center bg-white dark:bg-black rounded-[10px]">

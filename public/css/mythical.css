@@ -591,8 +591,24 @@ video {
   left: 33.333333%;
 }
 
+.left-\[30px\] {
+  left: 30px;
+}
+
+.left-\[50px\] {
+  left: 50px;
+}
+
+.left-\[110px\] {
+  left: 110px;
+}
+
 .top-5 {
   top: 1.25rem;
+}
+
+.top-\[35px\] {
+  top: 35px;
 }
 
 .top-\[15px\] {
@@ -643,20 +659,12 @@ video {
   top: 350px;
 }
 
-.top-\[35px\] {
-  top: 35px;
-}
-
 .top-\[500px\] {
   top: 500px;
 }
 
 .top-\[20px\] {
   top: 20px;
-}
-
-.left-\[30px\] {
-  left: 30px;
 }
 
 .top-\[25px\] {
@@ -759,6 +767,22 @@ video {
   height: 38px;
 }
 
+.h-\[121px\] {
+  height: 121px;
+}
+
+.h-\[82px\] {
+  height: 82px;
+}
+
+.h-\[35px\] {
+  height: 35px;
+}
+
+.h-\[18px\] {
+  height: 18px;
+}
+
 .h-\[19px\] {
   height: 19px;
 }
@@ -801,10 +825,6 @@ video {
 
 .h-\[31px\] {
   height: 31px;
-}
-
-.h-\[18px\] {
-  height: 18px;
 }
 
 .h-\[93px\] {
@@ -879,10 +899,6 @@ video {
   width: 415px;
 }
 
-.w-80 {
-  width: 20rem;
-}
-
 .w-\[28px\] {
   width: 28px;
 }
@@ -901,6 +917,22 @@ video {
 
 .w-\[32px\] {
   width: 32px;
+}
+
+.w-\[327px\] {
+  width: 327px;
+}
+
+.w-\[82px\] {
+  width: 82px;
+}
+
+.w-\[94px\] {
+  width: 94px;
+}
+
+.w-\[10px\] {
+  width: 10px;
 }
 
 .w-\[51px\] {
@@ -965,10 +997,6 @@ video {
 
 .w-\[19px\] {
   width: 19px;
-}
-
-.w-\[327px\] {
-  width: 327px;
 }
 
 .w-\[168px\] {
@@ -1166,6 +1194,10 @@ video {
   background-image: url(/images/staff/avatarBg.png);
 }
 
+.bg-arrow-light {
+  background-image: url(/images/news/arrow_light.png);
+}
+
 .bg-left {
   background-position: left;
 }
@@ -1200,6 +1232,10 @@ video {
   font-size: 13px;
 }
 
+.text-\[15px\] {
+  font-size: 15px;
+}
+
 .text-\[16px\] {
   font-size: 16px;
 }
@@ -1216,10 +1252,6 @@ video {
   font-size: 26px;
 }
 
-.text-\[15px\] {
-  font-size: 15px;
-}
-
 .font-semibold {
   font-weight: 600;
 }
@@ -1230,6 +1262,10 @@ video {
 
 .leading-\[25px\] {
   line-height: 25px;
+}
+
+.leading-\[18px\] {
+  line-height: 18px;
 }
 
 .leading-\[19px\] {
@@ -1246,10 +1282,6 @@ video {
 
 .leading-\[31px\] {
   line-height: 31px;
-}
-
-.leading-\[18px\] {
-  line-height: 18px;
 }
 
 .leading-\[16px\] {
@@ -1288,10 +1320,6 @@ video {
 
 .text-opacity-80 {
   --tw-text-opacity: 0.8;
-}
-
-.opacity-90 {
-  opacity: 0.9;
 }
 
 .shadow-dc {
@@ -1381,6 +1409,10 @@ video {
 
 .dark .dark\:bg-settings-dark {
   background-image: url(/images/nav/settings_dark.png);
+}
+
+.dark .dark\:bg-arrow-dark {
+  background-image: url(/images/news/arrow_dark.png);
 }
 
 .dark .dark\:text-black {

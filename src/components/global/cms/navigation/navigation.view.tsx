@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react';
+import { NewsProvider } from '../../../../core/providers/news.provider';
 import { PageProvider } from '../../../../core/providers/page.provider';
 import { ProfileProvider } from '../../../../core/providers/profile.provider';
 import { SessionProvider } from '../../../../core/providers/session.provider';
@@ -8,6 +9,7 @@ export const NavigationView: FC<{}> = props => {
     const { change, title } = PageProvider();
     const { setProfile } = ProfileProvider();
     const { setStaff } = StaffProvider();
+    const { setNewsLists } = NewsProvider();
     const { getUser } = SessionProvider();
 
     const setPage = useCallback((page: string) => {
@@ -28,8 +30,11 @@ export const NavigationView: FC<{}> = props => {
         }
 
         if (page == 'news') {
-            title('News Archive');
-            change('news');
+            setNewsLists()
+            .then(() => {
+                title('News Archive');
+                change('news');
+            });
         }
     }, [ change, title ]);
 
