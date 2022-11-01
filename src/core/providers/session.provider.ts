@@ -7,7 +7,6 @@ const session = () => {
     let [ userSession, setUserSession ] = useState<UserSessionDefinition>(new UserSessionDefinition());
 
     const registerUser = (userSession: UserSessionDefinition) => {
-        console.log(userSession);
         setUserSession(userSession);
         setLogged(true);
         localStorage.setItem('session', userSession.token);

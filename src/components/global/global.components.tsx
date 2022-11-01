@@ -9,7 +9,7 @@ import { RegistrationView } from './guest/registration.view';
 
 export const Global: FC<{  }> = props => {
     const requestManager: RequestManager = new RequestManager();
-    const { getLogged, onRefresh, registerUser } = SessionProvider();
+    const { getLogged, onRefresh, registerUser, removeUser } = SessionProvider();
     const { check } = PageProvider();
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export const Global: FC<{  }> = props => {
                 userSession.userInfo.rank = json.user.rank;
                 registerUser(userSession);
             });
-        }        
+        }
     }, [  ]);
 
     if (getLogged()) {

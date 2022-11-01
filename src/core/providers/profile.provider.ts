@@ -3,10 +3,12 @@ import { useBetween } from 'use-between';
 import { RoomProfileDefinition } from '../definitions/room-profile.definition';
 import { UserInfoDefinition } from '../definitions/user-info.definition';
 import { UserProfileDefinition } from '../definitions/user-profile.definition';
+import { ConfigManager } from '../manager/config.manager';
 import { RequestManager } from '../manager/request.manager';
 
 const profile = () => {
     const requestManager: RequestManager = new RequestManager();
+    const configManager: ConfigManager = new ConfigManager();
     const [ userData, setUserData ] = useState<UserProfileDefinition>(null);
 
     const setProfile = async (username: string) => {
@@ -44,12 +46,12 @@ const profile = () => {
             roomInfo.id = room.id;
             roomInfo.name = room.roomName;
             roomInfo.count = room.usersCount;
-            //const result = await requestManager.thumbnail('1.png');
-            /*if (result.ok) {
-                roomInfo.thumbnail = 'http://localhost/' + room.id + '.png';
-            } else {*/
+            const result = await requestManager.thumbnail('1.png');
+            if (result.ok) {
+                roomInfo.thumbnail = configManager.config.thumbnail_url + room.id + '.png';
+            } else {
                 roomInfo.thumbnail = '/images/profile/thumbnail.png';
-            //}
+            }
             rooms.push(roomInfo);
         }
         userProfile.rooms = rooms;

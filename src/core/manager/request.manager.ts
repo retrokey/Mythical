@@ -6,10 +6,7 @@ export class RequestManager {
     public async thumbnail(thumb: string): Promise<any> {
         let request = await fetch(this.configManager.config.thumbnail_url + thumb, {
             method: 'HEAD',
-            mode: 'cors',
-            headers: {
-                'access-control-allow-origin': '*'
-            }
+            mode: 'no-cors'
         });
         return request;
     }
