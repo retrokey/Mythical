@@ -1,7 +1,7 @@
 # Mythical
 
 ## What is Mythical?
-Mythical is a project that have the goal to provide a  new way to interact either CMS and Hotel.
+Mythical is a project that have the goal to provide a new way to interact either CMS and Hotel.
 
 ## How do working?
 Mythical uses a backend made with NestJS that working as Rest API pointed on the database that the hotel using.
