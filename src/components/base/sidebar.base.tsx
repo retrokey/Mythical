@@ -14,8 +14,10 @@ export const SidebarView: FC<PropsWithChildren<SidebarProps>> = props => {
 
 export const ExtraSidebarView: FC<PropsWithChildren<SidebarProps>> = props => {
     return (
-    <div className={ props.classList }>
-        { props.children }
-    </div>
+    <>
+        <div className={ props.classList }>
+            { props.children }
+        </div>
+    </>
     );
 }

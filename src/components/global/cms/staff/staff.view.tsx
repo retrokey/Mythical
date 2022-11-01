@@ -83,7 +83,7 @@ export const StaffView: FC<{  }> = props => {
     }, [ getStaff ]);
 
     return (
-    <SidebarView classList={ "absolute flex flex-col items-center mobileSmall:h-[89%] mobileSmall:top-[10.8%] laptop:w-[411px] laptop:h-screen laptop:top-0 laptop:left-[80px] overflow-y-auto bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-[10px] z-[2] backdrop-blur-[5px]" }>
+    <SidebarView classList={ "absolute flex flex-col items-center mobileSmall:w-[411px] mobileSmall:h-[calc(100%-80px)] mobileSmall:top-[80px] laptop:w-[411px] laptop:h-screen laptop:top-0 laptop:left-[80px] overflow-y-auto bg-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 rounded-r-[10px] z-[2] backdrop-blur-[5px]" }>
         <div className="relative w-full h-auto top-5">
             <div className="relative h-[19px] top-0 font-inter font-semibold text-[16px] text-center leading-[19px]">Founders</div>
             <div className="relative top-5 flex flex-col items-center">
