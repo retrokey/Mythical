@@ -10,23 +10,17 @@ With a request to endpoint, Mythical can fetch the data that be outgoing from da
 ## Technologies
 
 🔥FRONTEND
-
     ✨ Typescript as language 
-
     ✨ ReactJS as framework
-
     ✨ TailwindCSS for styling
 
 🔥BACKEND
-
     ✨ Typescript as language
-
     ✨ NestJS as framework
-
     ✨ TypeORM for connection to database
-
+    
 ## Disclosure
 I'm open to receive any advice, but i ask to in friendly way and doesn't aggressive.
 
 ## Backend repository
-The repository of backend can be finded on this link: <a href="https://github.com/cosimoceleste/Vanadis" target="_blank">Click here</a>
+The repository of backend can be finded on this link: <a href="https://github.com/cosimoceleste/Vanadis">Click here</a>
