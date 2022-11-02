@@ -30,7 +30,11 @@ export const NewsView: FC<{  }> = props => {
 
     const openNews = useCallback((news: number) => {
         setNewsId(news);
-        title('News: ' + getNewsLists().find(element => element.id == news).name);
+        if (news == 0) {
+            title('News Archive');
+        } else {
+            title('News: ' + getNewsLists().find(element => element.id == news).name);
+        }
     }, [ setNewsId, getNewsLists ]);
 
     const getNews = useCallback(() => {
@@ -62,7 +66,7 @@ export const NewsView: FC<{  }> = props => {
         }
         { newsId != 0 &&
         <div className="absolute flex flex-col items-center justify-center w-[17px] h-[53px] laptop:top-[80px] z-[2] mobileSmall:top-[160px] mobileSmall:left-[911px] laptop:left-[991px] rounded-r-[10px] bg-white bg-opacity-70">
-            <div onClick={ event => setNewsId(0) } className="relative cursor-pointer w-[10px] h-[16px] bg-arrow-light"></div>
+            <div onClick={ event => openNews(0) } className="relative cursor-pointer w-[10px] h-[16px] bg-arrow-light"></div>
         </div>
         }
     </>

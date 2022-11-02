@@ -1,4 +1,5 @@
 import { FC, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { PageProvider } from '../../../core/providers/page.provider';
 import { SessionProvider } from '../../../core/providers/session.provider';
 import { NavigationView } from './navigation/navigation.view';
@@ -8,8 +9,8 @@ import { ProfileView } from './profile/profile.view';
 import { StaffView } from './staff/staff.view';
 
 export const CMSView: FC<{  }> = props => {
-    const { check, title, change } = PageProvider();
-    const { removeUser } = SessionProvider();
+    const { check, title } = PageProvider();
+    const { getUser, removeUser } = SessionProvider();
 
     const logout = useCallback(() => {
         removeUser();
@@ -23,6 +24,13 @@ export const CMSView: FC<{  }> = props => {
             <div onClick={ event => logout()} className="absolute cursor-pointer w-full h-[25px] top-[5px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-purple shadow-dc">
                 LOGOUT
             </div>
+            { getUser().permission.get('admin') &&
+            <Link to="admin">
+                <div className="absolute cursor-pointer w-full h-[25px] top-[35px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-red shadow-adm">
+                    ADMIN
+                </div>
+            </Link>
+            }
         </div>
         { check('profile') && <ProfileView /> }
         { check('staff') && <StaffView /> }

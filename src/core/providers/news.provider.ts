@@ -8,10 +8,6 @@ const news = () => {
     const requestManager: RequestManager = new RequestManager();
     const [ newsList, setNewsList ] = useState<Array<NewsInfoDefinition>>(null);
 
-    const times = () => {
-        
-    }
-
     const setNewsLists = async () => {
         let response: any = await requestManager.get('news/lists', {
             'content-type': 'application/json',
@@ -21,7 +17,6 @@ const news = () => {
         if (response.status != 'success') {
             return;
         }
-        times();
 
         let newsList: Array<NewsInfoDefinition> = new Array<NewsInfoDefinition>();
         for (let news of response.data.lists) {

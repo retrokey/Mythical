@@ -1,5 +1,4 @@
 import { FC, useEffect } from 'react';
-import { UserSessionDefinition } from '../../core/definitions/user-session.definition';
 import { RequestManager } from '../../core/manager/request.manager';
 import { PageProvider } from '../../core/providers/page.provider';
 import { SessionProvider } from '../../core/providers/session.provider';

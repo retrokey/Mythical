@@ -4,7 +4,8 @@ import { ConfigManager } from '../manager/config.manager';
 
 const page = () => {
     const configManager: ConfigManager = new ConfigManager();
-    const [ pageNow, setPageNow] = useState<string>('');
+    const [ pageNow, setPageNow ] = useState<string>('');
+    const [ adminPage, setAdminPage ] = useState<string>('');
 
     const title = (title: string) => {
         document.title = configManager.config.name + ' - ' + title;
@@ -17,6 +18,14 @@ const page = () => {
         return pageNow == page ? true : false;
     }
 
-    return { title, change, check }
+    const changeAdmin = (page: string) => {
+        setAdminPage(page);
+    }
+
+    const checkAdmin = (page: string) => {
+        return adminPage == page ? true : false;
+    }
+
+    return { title, change, check, changeAdmin, checkAdmin }
 }
 export const PageProvider = () => useBetween(page);

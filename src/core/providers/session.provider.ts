@@ -1,10 +1,13 @@
+import { Console } from 'console';
 import { useState } from 'react';
 import { useBetween } from 'use-between';
 import { UserSessionDefinition } from '../definitions/user-session.definition';
+import { RequestManager } from '../manager/request.manager';
 
 const session = () => {
-    let [ logged, setLogged ] = useState<boolean>(false);
-    let [ userSession, setUserSession ] = useState<UserSessionDefinition>();
+    const requestManager: RequestManager = new RequestManager();
+    const [ logged, setLogged ] = useState<boolean>(false);
+    const [ userSession, setUserSession ] = useState<UserSessionDefinition>();
 
     const registerUser = (json: any) => {
         let userSession: UserSessionDefinition = {
@@ -17,11 +20,28 @@ const session = () => {
                 motto: json.user.mission,
                 role: json.user.role,
                 rank: json.user.rank
-            }
+            },
+            permission: null
         };
-        setUserSession(userSession);
-        setLogged(true);
-        localStorage.setItem('session', userSession.token);
+        requestManager.get('user/permission', {
+            'content-type': 'application/json',
+            'access-control-allow-origin': '*'
+        })
+        .then((response) => {
+            if (response.status != 'success') {
+                return;
+            }
+
+            let json = response.data;
+            let permissionMap: Map<string, boolean> = new Map<string, boolean>();
+            for (let permission of json.lists) {
+                permissionMap.set(permission.name, userSession.userInfo.rank >= permission.rankId ? true : false);
+            }
+            userSession.permission = permissionMap;
+            setUserSession(userSession);
+            setLogged(true);
+            localStorage.setItem('session', userSession.token);
+        });
     }
 
     const onRefresh = () => {

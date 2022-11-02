@@ -56,6 +56,11 @@ module.exports = {
                 'red': '#DD5246'
             },
             backgroundImage: {
+                'nav': 'linear-gradient(to bottom, #97b4d7 0%, #b6cae6 100%)',
+                'dash': 'url(/images/admin/dashboard.png)',
+                'server': 'url(/images/admin/server.png)',
+                'user': 'url(/images/admin/user.png)',
+                'site': 'url(/images/admin/site.png)',
                 'gradient': 'url(/images/guest/gradient.png)',
                 'left': 'url(/images/guest/left.png)',
                 'right': 'url(/images/guest/right.png)',
