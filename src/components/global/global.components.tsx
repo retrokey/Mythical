@@ -20,6 +20,7 @@ export const Global: FC<{  }> = props => {
             })
             .then(response => {
                 if (response.status != 'success') {
+                    removeUser();
                     return;
                 }
 
