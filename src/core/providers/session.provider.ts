@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import { useState } from 'react';
 import { useBetween } from 'use-between';
 import { UserSessionDefinition } from '../definitions/user-session.definition';

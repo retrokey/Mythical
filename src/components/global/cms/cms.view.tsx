@@ -24,7 +24,7 @@ export const CMSView: FC<{  }> = props => {
             <div onClick={ event => logout()} className="absolute cursor-pointer w-full h-[25px] top-[5px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-purple shadow-dc">
                 LOGOUT
             </div>
-            { getUser().permission.get('admin') &&
+            { getUser().permission.get('admin.login') &&
             <Link to="admin">
                 <div className="absolute cursor-pointer w-full h-[25px] top-[35px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-red shadow-adm">
                     ADMIN
