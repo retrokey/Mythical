@@ -11,7 +11,7 @@ export const NewsListView: FC<{}> = props => {
 
     useEffect(() => {
         title('ADMIN: News Manager - List');
-    }, []);
+    }, [  ]);
 
     const newsList = useMemo(() => {
         const items: Array<ReactElement> = new Array<ReactElement>();

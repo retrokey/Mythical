@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ConfigManager } from '../../core/manager/config.manager';
 import { RequestManager } from '../../core/manager/request.manager';
+import { NewsProvider } from '../../core/providers/news.provider';
 import { PageProvider } from '../../core/providers/page.provider';
 import { SessionProvider } from '../../core/providers/session.provider';
 import { DashboardView } from './views/dashboard.view';
@@ -12,6 +13,7 @@ export const Admin: FC<{}> = props => {
     const requestManager: RequestManager = new RequestManager();
     const { changeAdmin, checkAdmin } = PageProvider();
     const { getUser, onRefresh, removeUser, registerUser } = SessionProvider();
+    const { setNewsLists } = NewsProvider();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,23 +23,27 @@ export const Admin: FC<{}> = props => {
                 requestManager.get('user/verify', {
                     'token': token
                 })
-                    .then(response => {
-                        if (response.status != 'success') {
-                            removeUser();
-                            return;
-                        }
+                .then(response => {
+                    if (response.status != 'success') {
+                        removeUser();
+                        return;
+                    }
 
-                        let json = response.data;
-                        registerUser(json);
-                        change('dashboard');
-                    });
+                    let json = response.data;
+                    registerUser(json);
+                    change('dashboard');
+                });
             }
         } else {
             change('dashboard');
         }
     }, [  ]);
 
-    const change = useCallback((page: string) => {
+    const change = useCallback(async (page: string) => {
+        if (page == 'news.list') {
+            await setNewsLists();
+        }
+
         changeAdmin(page);
     }, [ changeAdmin ]);
 
@@ -48,10 +54,11 @@ export const Admin: FC<{}> = props => {
     return (
         <div className="absolute pt-[35px] px-[1.5rem] w-full flex flex-row">
             <div className="relative w-[200px] h-auto">
-                <ul className="bg-[#E2E2E0] p-0 border-black">
+                <ul className="bg-[#E2E2E0] p-0">
                     <li onClick={ event => change('dashboard') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
                         Dashboard
                     </li>
+                    { getUser().permission.get('admin.news') && 
                     <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black"> 
                         News
                         <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
@@ -62,6 +69,7 @@ export const Admin: FC<{}> = props => {
                             }
                         </ul>
                     </li>
+                    }
                     <li onClick={ event => navigate('/') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-black text-black">
                         Return to { configManager.config.name }
                     </li>

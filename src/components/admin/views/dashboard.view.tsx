@@ -10,7 +10,7 @@ export const DashboardView: FC<{}> = props => {
 
     useEffect(() => {
         title('ADMIN: Dashboard');
-    }, []);
+    }, [  ]);
 
     return (
         <div className="flex flex-row justify-between">
