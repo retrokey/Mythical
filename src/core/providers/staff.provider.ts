@@ -11,7 +11,11 @@ const staff = () => {
     const [ staffList, setStaffList ] = useState<StaffListDefinition>(null);
 
     const setStaff = async () => {
-        let staffList: StaffListDefinition = new StaffListDefinition();
+        let staffList: StaffListDefinition = {
+            fou: null,
+            adm: null,
+            mod: null
+        };
         let ranks: any = configManager.config.ranks;
 
         let founderResponse: any = await requestManager.get('user/rank/' + ranks.fou, {
@@ -23,12 +27,15 @@ const staff = () => {
         } else {
             let founderArray: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
             for (let founder of founderResponse.data.staffer) {
-                let founderInfo: UserInfoDefinition = new UserInfoDefinition();
-                founderInfo.username = founder.nickname;
-                founderInfo.look = founder.avatar;
-                founderInfo.motto = founder.mission;
-                founderInfo.status = founder.status;
-                founderInfo.role = founder.role;
+                let founderInfo: UserInfoDefinition = {
+                    id: founder.id,
+                    username: founder.nickname,
+                    look: founder.avatar,
+                    motto: founder.mission,
+                    status: founder.status,
+                    rank: founder.rank,
+                    role: founder.role
+                };
                 founderArray.push(founderInfo);
             }
             staffList.fou = founderArray;
@@ -42,13 +49,16 @@ const staff = () => {
             staffList.adm = new Array<UserInfoDefinition>(0);
         } else {
             let admArray: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
-            for (let adm of adminResponse.data.staffer) {
-                let admInfo: UserInfoDefinition = new UserInfoDefinition();
-                admInfo.username = adm.nickname;
-                admInfo.look = adm.avatar;
-                admInfo.motto = adm.mission;
-                admInfo.status = adm.status;
-                admInfo.role = adm.role;
+            for (let admin of adminResponse.data.staffer) {
+                let admInfo: UserInfoDefinition = {
+                    id: admin.id,
+                    username: admin.nickname,
+                    look: admin.avatar,
+                    motto: admin.mission,
+                    status: admin.status,
+                    rank: admin.rank,
+                    role: admin.role
+                };
                 admArray.push(admInfo);
             }
             staffList.adm = admArray;
@@ -62,13 +72,16 @@ const staff = () => {
             staffList.mod = new Array<UserInfoDefinition>(0);
         } else {
             let modArray: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
-            for (let mod of modResponse.data.staffer) {
-                let modInfo: UserInfoDefinition = new UserInfoDefinition();
-                modInfo.username = mod.nickname;
-                modInfo.look = mod.avatar;
-                modInfo.motto = mod.mission;
-                modInfo.status = mod.status;
-                modInfo.role = mod.role;
+            for (let moderator of modResponse.data.staffer) {
+                let modInfo: UserInfoDefinition = {
+                    id: moderator.id,
+                    username: moderator.nickname,
+                    look: moderator.avatar,
+                    motto: moderator.mission,
+                    status: moderator.status,
+                    rank: moderator.rank,
+                    role: moderator.role
+                };
                 modArray.push(modInfo);
             }
             staffList.mod = modArray;

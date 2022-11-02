@@ -25,13 +25,14 @@ const news = () => {
 
         let newsList: Array<NewsInfoDefinition> = new Array<NewsInfoDefinition>();
         for (let news of response.data.lists) {
-            let newsInfo: NewsInfoDefinition = new NewsInfoDefinition();
-            newsInfo.id = news.id;
-            newsInfo.name = news.name;
-            newsInfo.content = news.content;
-            newsInfo.image = news.image;
-            newsInfo.author = news.author.nickname;
-            newsInfo.time = moment(parseInt(news.time)).fromNow();
+            let newsInfo: NewsInfoDefinition = {
+                id: news.id,
+                name: news.name,
+                content: news.content,
+                image: news.image,
+                author: news.author.nickname,
+                time: moment(parseInt(news.time)).fromNow()
+            };
             newsList.push(newsInfo);
         }
         setNewsList(newsList);

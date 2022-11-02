@@ -4,9 +4,21 @@ import { UserSessionDefinition } from '../definitions/user-session.definition';
 
 const session = () => {
     let [ logged, setLogged ] = useState<boolean>(false);
-    let [ userSession, setUserSession ] = useState<UserSessionDefinition>(new UserSessionDefinition());
+    let [ userSession, setUserSession ] = useState<UserSessionDefinition>();
 
-    const registerUser = (userSession: UserSessionDefinition) => {
+    const registerUser = (json: any) => {
+        let userSession: UserSessionDefinition = {
+            token: json.token,
+            userInfo: {
+                id: json.user.id,
+                username: json.user.nickname,
+                SSO: json.user.SSO,
+                look: json.user.avatar,
+                motto: json.user.mission,
+                role: json.user.role,
+                rank: json.user.rank
+            }
+        };
         setUserSession(userSession);
         setLogged(true);
         localStorage.setItem('session', userSession.token);

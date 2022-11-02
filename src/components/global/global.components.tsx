@@ -24,16 +24,7 @@ export const Global: FC<{  }> = props => {
                 }
 
                 let json = response.data;
-                let userSession: UserSessionDefinition = new UserSessionDefinition();
-                userSession.token = json.token;
-                userSession.userInfo.id = json.user.id;
-                userSession.userInfo.username = json.user.nickname;
-                userSession.userInfo.SSO = json.user.SSO;
-                userSession.userInfo.look = json.user.avatar;
-                userSession.userInfo.motto = json.user.mission;
-                userSession.userInfo.role = json.user.role;
-                userSession.userInfo.rank = json.user.rank;
-                registerUser(userSession);
+                registerUser(json);
             });
         }
     }, [  ]);

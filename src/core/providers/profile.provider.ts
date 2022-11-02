@@ -21,40 +21,44 @@ const profile = () => {
             return;
         }
 
-        let userProfile: UserProfileDefinition = new UserProfileDefinition();
-        userProfile.registration = response.data.registration;
-        userProfile.userInfo.username = response.data.user.nickname;
-        userProfile.userInfo.look = response.data.user.avatar;
-        userProfile.userInfo.motto = response.data.user.mission;
         let currencyMap: Map<number, number> = new Map<number, number>();
         currencyMap.set(1, response.data.user.credits);
         for (let currency of response.data.user.currency) {
             currencyMap.set(currency.currencyType, currency.currencyAmount);
         }
-        userProfile.currency = currencyMap;
         let friends: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
         for (let friend of response.data.friends) {
-            let friendInfo: UserInfoDefinition = new UserInfoDefinition();
-            friendInfo.look = friend.avatar;
-            friendInfo.username = friend.nickname;
+            let friendInfo: UserInfoDefinition = {
+                look: friend.avatar,
+                username: friend.nickname
+            }
             friends.push(friendInfo);
         }
-        userProfile.friends = friends;
         let rooms: Array<RoomProfileDefinition> = new Array<RoomProfileDefinition>();
         for (let room of response.data.rooms) {
-            let roomInfo: RoomProfileDefinition = new RoomProfileDefinition();
-            roomInfo.id = room.id;
-            roomInfo.name = room.roomName;
-            roomInfo.count = room.usersCount;
+            let roomInfo: RoomProfileDefinition = {
+                id: room.id,
+                name: room.roomName,
+                count: room.usersCount,
+                thumbnail: '/images/profile/thumbnail.png'
+            }
             const result = await requestManager.thumbnail('1.png');
             if (result.ok) {
                 roomInfo.thumbnail = configManager.config.thumbnail_url + room.id + '.png';
-            } else {
-                roomInfo.thumbnail = '/images/profile/thumbnail.png';
             }
             rooms.push(roomInfo);
         }
-        userProfile.rooms = rooms;
+        let userProfile: UserProfileDefinition = {
+            registration: response.data.registration,
+            userInfo: {
+                username: response.data.user.nickname,
+                look: response.data.user.avatar,
+                motto: response.data.user.mission,
+            },
+            currency: currencyMap,
+            friends: friends,
+            rooms: rooms
+        };
         setUserData(userProfile);
     }
 
