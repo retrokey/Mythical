@@ -9,7 +9,7 @@ import { ProfileView } from './profile/profile.view';
 import { StaffView } from './staff/staff.view';
 
 export const CMSView: FC<{  }> = props => {
-    const { check, title } = PageProvider();
+    const { check, title, changeSection } = PageProvider();
     const { getUser, removeUser } = SessionProvider();
 
     const logout = useCallback(() => {
@@ -25,11 +25,9 @@ export const CMSView: FC<{  }> = props => {
                 LOGOUT
             </div>
             { getUser().permission.get('admin.login') &&
-            <Link to="admin">
-                <div className="absolute cursor-pointer w-full h-[25px] top-[35px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-red shadow-adm">
-                    ADMIN
-                </div>
-            </Link>
+            <div onClick={ event => changeSection('admin') } className="absolute cursor-pointer w-full h-[25px] top-[35px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-red shadow-adm">
+                ADMIN
+            </div>
             }
         </div>
         { check('profile') && <ProfileView /> }

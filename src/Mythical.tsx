@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Admin } from './components/admin/admin.components';
 import { Global } from './components/global/global.components';
+import { PageProvider } from './core/providers/page.provider';
 
 export const Mythical: FC<{  }> = props => {
+    const { checkSection } = PageProvider();
+
     return (
-        <HashRouter>
-            <Routes>
-                <Route index element={ <Global />} />
-                <Route path="/admin" element={ <Admin /> } />
-            </Routes>
-        </HashRouter>
+        <>
+            { checkSection('generic') && <Global /> }
+            { checkSection('admin') && <Admin /> }
+        </>
     );
 }

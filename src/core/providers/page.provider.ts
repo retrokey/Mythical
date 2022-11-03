@@ -6,6 +6,7 @@ const page = () => {
     const configManager: ConfigManager = new ConfigManager();
     const [ pageNow, setPageNow ] = useState<string>('');
     const [ adminPage, setAdminPage ] = useState<string>('');
+    const [ section, setSection ] = useState<string>('generic');
 
     const title = (title: string) => {
         document.title = configManager.config.name + ' - ' + title;
@@ -26,6 +27,14 @@ const page = () => {
         return adminPage == page ? true : false;
     }
 
-    return { title, change, check, changeAdmin, checkAdmin }
+    const changeSection = (section: string) => {
+        setSection(section);
+    }
+
+    const checkSection = (nowSection: string) => {
+        return section == nowSection ? true : false;
+    }
+
+    return { title, change, check, changeAdmin, checkAdmin, changeSection, checkSection }
 }
 export const PageProvider = () => useBetween(page);

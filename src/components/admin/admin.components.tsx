@@ -1,5 +1,4 @@
 import { FC, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ConfigManager } from '../../core/manager/config.manager';
 import { RequestManager } from '../../core/manager/request.manager';
 import { NewsProvider } from '../../core/providers/news.provider';
@@ -11,10 +10,9 @@ import { NewsListView } from './views/news/news-list.view';
 export const Admin: FC<{}> = props => {
     const configManager: ConfigManager = new ConfigManager();
     const requestManager: RequestManager = new RequestManager();
-    const { changeAdmin, checkAdmin } = PageProvider();
+    const { changeAdmin, checkAdmin, changeSection } = PageProvider();
     const { getUser, onRefresh, removeUser, registerUser } = SessionProvider();
     const { setNewsLists } = NewsProvider();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (!getUser()) {
@@ -70,7 +68,7 @@ export const Admin: FC<{}> = props => {
                         </ul>
                     </li>
                     }
-                    <li onClick={ event => navigate('/') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-black text-black">
+                    <li onClick={ event => changeSection('generic') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-black text-black">
                         Return to { configManager.config.name }
                     </li>
                 </ul>
