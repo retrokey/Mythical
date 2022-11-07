@@ -1,3 +1,5 @@
+<img src="https://i.imgur.com/MMSSmDL.png" />
+
 # Mythical
 
 ## What is Mythical?
