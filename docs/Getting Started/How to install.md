@@ -17,7 +17,7 @@
 
 ✨ Vanadis
 
-	🔥 Repository (<a href="https://github.com/cosimoceleste/Vanadis">URL</a>)
+	🔥 Repository (https://github.com/cosimoceleste/Vanadis)
 
 ## Vanadis | NODE MODULES
 When you extracted the files zip file that downloaded from repository, open the CMD in the folder where you extracted the files and run "npm install".
