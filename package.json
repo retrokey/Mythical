@@ -1,6 +1,6 @@
 {
   "name": "mythical",
-  "version": "2.0.29",
+  "version": "2.0.30",
   "author": {
     "name": "RealCosis",
     "email": "gogliacosimoceleste@gmail.com"
@@ -11,6 +11,7 @@
     "build": "react-scripts build"
   },
   "dependencies": {
+    "chalk": "^5.1.2",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
