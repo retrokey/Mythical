@@ -5,7 +5,12 @@
         "adm": "6",
         "mod": "5"
     },
+    "ranksName": {
+        "fou": "Founders",
+        "adm": "Administrators",
+        "mod": "Moderators"
+    },
     "api_url": "http://localhost:3002/",
-    "nitro_url": "http://localhost/nitro/nitro.html?sso=",
+    "nitro_url": "http://127.0.0.1/nitro/?sso=",
     "thumbnail_url": "http://localhost/flash/swf/c_images/camera/thumbnail/"
 }

@@ -555,6 +555,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -691,8 +695,8 @@ video {
   left: 290px;
 }
 
-.top-40 {
-  top: 10rem;
+.top-auto {
+  top: auto;
 }
 
 .z-\[2\] {
@@ -709,6 +713,10 @@ video {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .flex {
@@ -1501,9 +1509,41 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.first\:top-5:first-child {
+  top: 1.25rem;
+}
+
+.first\:mt-0:first-child {
+  margin-top: 0px;
+}
+
 .first\:rounded-t-\[10px\]:first-child {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.last\:top-40:last-child {
+  top: 10rem;
+}
+
+.last\:top-36:last-child {
+  top: 9rem;
+}
+
+.last\:top-32:last-child {
+  top: 8rem;
+}
+
+.last\:top-28:last-child {
+  top: 7rem;
+}
+
+.last\:top-24:last-child {
+  top: 6rem;
+}
+
+.last\:top-auto:last-child {
+  top: auto;
 }
 
 .last\:rounded-b-\[10px\]:last-child {

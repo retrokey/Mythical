@@ -12,79 +12,32 @@ const staff = () => {
 
     const setStaff = async () => {
         let staffList: StaffListDefinition = {
-            fou: null,
-            adm: null,
-            mod: null
+            staffs: new Map<string, Array<UserInfoDefinition>>()
         };
-        let ranks: any = configManager.config.ranks;
 
-        let founderResponse: any = await requestManager.get('user/rank/' + ranks.fou, {
-            'content-type': 'application/json',
-            'access-control-allow-origin': '*'
-        });
-        if (founderResponse.data.staffer == null) {
-            staffList.fou = new Array<UserInfoDefinition>(0);
-        } else {
-            let founderArray: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
-            for (let founder of founderResponse.data.staffer) {
-                let founderInfo: UserInfoDefinition = {
-                    id: founder.id,
-                    username: founder.nickname,
-                    look: founder.avatar,
-                    motto: founder.mission,
-                    status: founder.status,
-                    rank: founder.rank,
-                    role: founder.role
-                };
-                founderArray.push(founderInfo);
+        for (let [key, val] of Object.entries(configManager.config.ranks)) {
+            let response: any = await requestManager.get('user/rank/' + val, {
+                'content-type': 'application/json',
+                'access-control-allow-origin': '*'
+            });
+            if (response.data.staffer == null) {
+                staffList.staffs[key] = new Array<StaffListDefinition>(0);
+            } else {
+                let array: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
+                for (let info of response.data.staffer) {
+                    let staffInfo: UserInfoDefinition = {
+                        id: info.id,
+                        username: info.nickname,
+                        look: info.avatar,
+                        motto: info.mission,
+                        status: info.status,
+                        rank: info.rank,
+                        role: info.role
+                    };
+                    array.push(staffInfo);
+                }
+                staffList.staffs.set(key, array);
             }
-            staffList.fou = founderArray;
-        }
-
-        let adminResponse: any = await requestManager.get('user/rank/' + ranks.adm, {
-            'content-type': 'application/json',
-            'access-control-allow-origin': '*'
-        });
-        if (adminResponse.data.staffer == null) {
-            staffList.adm = new Array<UserInfoDefinition>(0);
-        } else {
-            let admArray: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
-            for (let admin of adminResponse.data.staffer) {
-                let admInfo: UserInfoDefinition = {
-                    id: admin.id,
-                    username: admin.nickname,
-                    look: admin.avatar,
-                    motto: admin.mission,
-                    status: admin.status,
-                    rank: admin.rank,
-                    role: admin.role
-                };
-                admArray.push(admInfo);
-            }
-            staffList.adm = admArray;
-        }
-
-        let modResponse: any = await requestManager.get('user/rank/' + ranks.mod, {
-            'content-type': 'application/json',
-            'access-control-allow-origin': '*'
-        });
-        if (modResponse.data.staffer == null) {
-            staffList.mod = new Array<UserInfoDefinition>(0);
-        } else {
-            let modArray: Array<UserInfoDefinition> = new Array<UserInfoDefinition>();
-            for (let moderator of modResponse.data.staffer) {
-                let modInfo: UserInfoDefinition = {
-                    id: moderator.id,
-                    username: moderator.nickname,
-                    look: moderator.avatar,
-                    motto: moderator.mission,
-                    status: moderator.status,
-                    rank: moderator.rank,
-                    role: moderator.role
-                };
-                modArray.push(modInfo);
-            }
-            staffList.mod = modArray;
         }
 
         setStaffList(staffList);
