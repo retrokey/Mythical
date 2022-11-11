@@ -1,10 +1,8 @@
 import { FC, ReactElement, useCallback } from 'react';
-import { ConfigManager } from '../../../../core/manager/config.manager';
 import { StaffProvider } from '../../../../core/providers/staff.provider';
 import { SidebarView } from '../../../base/sidebar.base';
 
 export const StaffView: FC<{  }> = props => {
-    const configManager: ConfigManager = new ConfigManager();
     const { getStaff } = StaffProvider();
 
     const showStaff = useCallback(() => {

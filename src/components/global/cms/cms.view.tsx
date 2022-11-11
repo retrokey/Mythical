@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { PageProvider } from '../../../core/providers/page.provider';
 import { SessionProvider } from '../../../core/providers/session.provider';
@@ -6,11 +6,13 @@ import { NavigationView } from './navigation/navigation.view';
 import { NewsView } from './news/news.view';
 import { NitroView } from './nitro/nitro.view';
 import { ProfileView } from './profile/profile.view';
+import { SettingsView } from './settings/settings.view';
 import { StaffView } from './staff/staff.view';
 
 export const CMSView: FC<{  }> = props => {
     const { check, title, changeSection } = PageProvider();
     const { getUser, removeUser } = SessionProvider();
+    const mythical = useRef<HTMLDivElement>();
 
     const logout = useCallback(() => {
         removeUser();
@@ -18,7 +20,7 @@ export const CMSView: FC<{  }> = props => {
     }, [  ])
 
     return (
-    <div className="bg-gray dark:bg-gray bg-opacity-75 w-screen h-screen">
+    <div ref={ mythical } className="bg-gray dark:bg-gray bg-opacity-75 w-screen h-screen">
         <NavigationView />
         <div className="absolute w-[10%] mobileSmall:right-[25%] mobileSmall:top-[10.8%] laptop:top-0 laptop:right-[16%] py-[3px] px-[5px] h-auto z-[2]">
             <div onClick={ event => logout()} className="absolute cursor-pointer w-full h-[25px] top-[5px] rounded-[6px] leading-[25px] text-[13px] text-center text-white dark:text-black font-inter font-semibold border-[1px] border-black dark:border-white border-[solid] bg-purple shadow-dc">
@@ -33,6 +35,7 @@ export const CMSView: FC<{  }> = props => {
         { check('profile') && <ProfileView /> }
         { check('staff') && <StaffView /> }
         { check('news') && <NewsView /> }
+        { check('settings') && <SettingsView mythical={ mythical } /> }
         <NitroView />
     </div>
     );

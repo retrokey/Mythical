@@ -1,10 +1,8 @@
 import { FC, useEffect } from 'react';
-import { ConfigManager } from '../../../../core/manager/config.manager';
 import { PageProvider } from '../../../../core/providers/page.provider';
 import { SessionProvider } from '../../../../core/providers/session.provider';
 
 export const NitroView: FC<{  }> = props => {
-    const configManager: ConfigManager = new ConfigManager();
     const { title } = PageProvider();
     const { getUser } = SessionProvider();
 

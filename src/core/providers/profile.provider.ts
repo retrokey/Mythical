@@ -3,12 +3,10 @@ import { useBetween } from 'use-between';
 import { RoomProfileDefinition } from '../definitions/room-profile.definition';
 import { UserInfoDefinition } from '../definitions/user-info.definition';
 import { UserProfileDefinition } from '../definitions/user-profile.definition';
-import { ConfigManager } from '../manager/config.manager';
 import { RequestManager } from '../manager/request.manager';
 
 const profile = () => {
     const requestManager: RequestManager = new RequestManager();
-    const configManager: ConfigManager = new ConfigManager();
     const [ userData, setUserData ] = useState<UserProfileDefinition>(null);
 
     const setProfile = async (username: string) => {
@@ -66,6 +64,6 @@ const profile = () => {
         return userData;
     }
 
-    return { setProfile, getProfile };
+    return { setProfile, getProfile }
 }
 export const ProfileProvider = () => useBetween(profile);

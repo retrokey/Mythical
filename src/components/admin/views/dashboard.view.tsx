@@ -1,11 +1,7 @@
 import { FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ConfigManager } from '../../../core/manager/config.manager';
 import { PageProvider } from '../../../core/providers/page.provider';
-import { SessionProvider } from '../../../core/providers/session.provider';
 
 export const DashboardView: FC<{}> = props => {
-    const configManager: ConfigManager = new ConfigManager();
     const { title } = PageProvider();
 
     useEffect(() => {
@@ -22,11 +18,11 @@ export const DashboardView: FC<{}> = props => {
                             <tbody>
                                 <tr className="border-[1px]">
                                     <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30">Mythical Version:</td>
-                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">{ configManager.mythical.version }</td>
+                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">{ window.config.mythical.version }</td>
                                 </tr>
                                 <tr className="">
                                     <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30">Author:</td>
-                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">{ configManager.mythical.author.name } <small>({ configManager.mythical.author.email })</small></td>
+                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">{ window.config.mythical.author.name } <small>({ window.config.mythical.author.email })</small></td>
                                 </tr>
                             </tbody>
                         </table>

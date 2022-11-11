@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useBetween } from 'use-between';
-import { ConfigManager } from '../manager/config.manager';
 
 const page = () => {
-    const configManager: ConfigManager = new ConfigManager();
     const [ pageNow, setPageNow ] = useState<string>('');
     const [ adminPage, setAdminPage ] = useState<string>('');
     const [ section, setSection ] = useState<string>('generic');

@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { useBetween } from 'use-between';
 import { StaffListDefinition } from '../definitions/staff-list.definition';
 import { UserInfoDefinition } from '../definitions/user-info.definition';
-import { ConfigManager } from '../manager/config.manager';
 import { RequestManager } from '../manager/request.manager';
 
 const staff = () => {
     const requestManager: RequestManager = new RequestManager();
-    const configManager: ConfigManager = new ConfigManager();
     const [ staffList, setStaffList ] = useState<StaffListDefinition>(null);
 
     const setStaff = async () => {
@@ -47,6 +45,6 @@ const staff = () => {
         return staffList;
     }
 
-    return { setStaff, getStaff };
+    return { setStaff, getStaff }
 }
 export const StaffProvider = () => useBetween(staff);

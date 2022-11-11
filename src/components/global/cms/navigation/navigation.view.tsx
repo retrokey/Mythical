@@ -3,6 +3,7 @@ import { NewsProvider } from '../../../../core/providers/news.provider';
 import { PageProvider } from '../../../../core/providers/page.provider';
 import { ProfileProvider } from '../../../../core/providers/profile.provider';
 import { SessionProvider } from '../../../../core/providers/session.provider';
+import { SettingsProvider } from '../../../../core/providers/settings.provider';
 import { StaffProvider } from '../../../../core/providers/staff.provider';
 
 export const NavigationView: FC<{}> = props => {
@@ -10,31 +11,39 @@ export const NavigationView: FC<{}> = props => {
     const { setProfile } = ProfileProvider();
     const { setStaff } = StaffProvider();
     const { setNewsLists } = NewsProvider();
+    const { setUserSettings } = SettingsProvider();
     const { getUser } = SessionProvider();
 
     const setPage = useCallback((page: string) => {
-        if (page == 'profile') {
-            setProfile(getUser().userInfo.username)
-            .then(() => {
-                title('Profile of ' + getUser().userInfo.username);
-                change('profile');
-            });
-        }
-
-        if (page == 'staff') {
-            setStaff()
-            .then(() => {
-                title('Staff List');
-                change('staff');
-            });
-        }
-
-        if (page == 'news') {
-            setNewsLists()
-            .then(() => {
-                title('News Archive');
-                change('news');
-            });
+        switch (page) {
+            case 'profile':
+                setProfile(getUser().userInfo.username)
+                .then(() => {
+                    title('Profile of ' + getUser().userInfo.username);
+                    change('profile');
+                });
+            break;
+            case 'staff':
+                setStaff()
+                .then(() => {
+                    title('Staff List');
+                    change('staff');
+                });
+            break;
+            case 'news':
+                setNewsLists()
+                .then(() => {
+                    title('News Archive');
+                    change('news');
+                });
+            break;
+            case 'settings':
+                setUserSettings(getUser().userInfo.id)
+                .then(() => {
+                    title('Settings');
+                    change('settings');
+                })
+            break;
         }
     }, [ change, title ]);
 
@@ -54,7 +63,7 @@ export const NavigationView: FC<{}> = props => {
                 <div className="relative cursor-pointer bg-news-light dark:bg-news-dark w-[36px] h-[38px]" onClick={ event => setPage('news') }></div>
             </div>
             <div className="flex items-center mobileSmall:flex-row laptop:flex-col">
-                <div className="relative cursor-pointer bg-settings-light dark:bg-settings-dark w-[32px] h-[32px] mobileSmall:right-5 laptop:right-0 laptop:bottom-5"></div>
+                <div className="relative cursor-pointer bg-settings-light dark:bg-settings-dark w-[32px] h-[32px] mobileSmall:right-5 laptop:right-0 laptop:bottom-5" onClick={ event => setPage('settings') }></div>
             </div>
         </div>
     );
