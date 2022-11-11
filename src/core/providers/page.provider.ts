@@ -9,7 +9,7 @@ const page = () => {
     const [ section, setSection ] = useState<string>('generic');
 
     const title = (title: string) => {
-        document.title = configManager.config.name + ' - ' + title;
+        document.title = window.config.getValue<string>('name') + ' - ' + title;
     }
     const change = (page: string) => {
         setPageNow(page);

@@ -8,7 +8,6 @@ import { DashboardView } from './views/dashboard.view';
 import { NewsListView } from './views/news/news-list.view';
 
 export const Admin: FC<{}> = props => {
-    const configManager: ConfigManager = new ConfigManager();
     const requestManager: RequestManager = new RequestManager();
     const { changeAdmin, checkAdmin, changeSection } = PageProvider();
     const { getUser, onRefresh, removeUser, registerUser } = SessionProvider();
@@ -61,7 +60,7 @@ export const Admin: FC<{}> = props => {
                         News
                         <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
                             { getUser().permission.get('admin.news.list') &&
-                            <li onClick={event => change('news.list')} className="cursor-pointer">
+                            <li onClick={ event => change('news.list') } className="cursor-pointer">
                                 List
                             </li>
                             }
@@ -69,7 +68,7 @@ export const Admin: FC<{}> = props => {
                     </li>
                     }
                     <li onClick={ event => changeSection('generic') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-black text-black">
-                        Return to { configManager.config.name }
+                        Return to { window.config.getValue('name') }
                     </li>
                 </ul>
             </div>

@@ -1,10 +1,27 @@
 import { createRoot } from 'react-dom/client';
 import { ConfigManager } from './core/manager/config.manager';
 import { Mythical } from './Mythical';
-import chalk from 'chalk';
 
-let config: ConfigManager = new ConfigManager();
-console.log(chalk.black.bgGreenBright.bold("Mythical v" + config.mythical.version + " || MADE BY RealCosis"));
-console.log(chalk.black.bgGreenBright.bold("All rigits reserved || https://discord.gg/gyNWz5k8TV => Discord"));
-console.log(chalk.black.bgYellow.bold("WARNING! || If you rename, RealCosis doesn't will help you with issues!"));
-createRoot(document.getElementById('root')).render(<Mythical />);
+declare global {
+    interface Window {
+        config: ConfigManager;
+    }
+}
+
+// @ts-ignore
+fetch(MythicalConfig['config.urls'])
+.then(res => res.json())
+.then(json => {
+    window.config = new ConfigManager();
+    for (let [key, value] of Object.entries(json)) {
+        if (typeof(value) == 'object') {
+            window.config.setValue(key, new Map<string, unknown>);
+            for (let [keys, val] of Object.entries(value)) {
+                window.config.getValue<Map<string, unknown>>(key).set(keys, val);
+            }
+        } else {
+            window.config.setValue(key, value);
+        }
+    }
+    createRoot(document.getElementById('root')).render(<Mythical />);
+});

@@ -10,13 +10,13 @@ export const StaffView: FC<{  }> = props => {
     const showStaff = useCallback(() => {
         const items: Array<ReactElement> = new Array<ReactElement>();
 
-        for (let key of Object.keys(configManager.config.ranks)) {
+        for (let key of window.config.getValue<Map<string, number>>('ranks').keys()) {
             if (getStaff().staffs.get(key) == null) {
                 items.push(
                     <div key={ key } className="relative w-full h-auto first:mt-0 mt-auto">
-                        <div className="relative h-[19px] top-0 font-inter font-semibold text-[16px] text-center leading-[19px]">{ configManager.config.ranksName[key] }</div>
+                        <div className="relative h-[19px] top-0 font-inter font-semibold text-[16px] text-center leading-[19px]">{ window.config.getValue<Map<string, string>>('ranksName').get(key) }</div>
                         <div className="relative top-5 flex flex-col items-center">
-                            <p className="absolute text-center text-opacity-80 dark:text-opacity-80 dark:text-white text-black w-full h-[16px] leading-[16px] font-inter font-semibold text-[13px]">We doesn't have { configManager.config.ranksName[key] }!</p>
+                            <p className="absolute text-center text-opacity-80 dark:text-opacity-80 dark:text-white text-black w-full h-[16px] leading-[16px] font-inter font-semibold text-[13px]">We doesn't have { window.config.getValue<Map<string, string>>('ranksName').get(key) }!</p>
                         </div>
                     </div>
                 );
@@ -25,7 +25,7 @@ export const StaffView: FC<{  }> = props => {
                 for (let staff of getStaff().staffs.get(key)) {
                     let status = staff.status == '1' ? 'bg-online' : 'bg-offline';
                     staffs.push(
-                    <div className="first:rounded-t-[10px] last:rounded-b-[10px] flex flex-row items-center bg-white dark:bg-black relative w-[327px] h-[162px]">
+                    <div key={ staff.username } className="first:rounded-t-[10px] last:rounded-b-[10px] flex flex-row items-center bg-white dark:bg-black relative w-[327px] h-[162px]">
                         <div className="absolute w-[168px] h-full top-5">
                             <div className="absolute w-[72px] h-[122px] rounded-[8px] bg-staff-bg top-0 left-[30px]"></div>
                             <img className="absolute w-[64px] h-[110px] top-0 left-[30px]" src={ "https://imager.bobbaz.fr/avatarimage.php?figure=" + staff.look + "&direction=2&head_direction=3&gesture=sml&action=wav" }></img>
@@ -38,7 +38,7 @@ export const StaffView: FC<{  }> = props => {
                 }
                 items.push(
                     <div key={ key } className="relative w-full h-auto first:mt-0 mt-auto">
-                        <div className="relative h-[19px] top-0 font-inter font-semibold text-[16px] text-center leading-[19px]">{ configManager.config.ranksName[key] }</div>
+                        <div className="relative h-[19px] top-0 font-inter font-semibold text-[16px] text-center leading-[19px]">{ window.config.getValue<Map<string, string>>('ranksName').get(key) }</div>
                         <div className="relative top-5 flex flex-col items-center">
                             { staffs }
                         </div>

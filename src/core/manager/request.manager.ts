@@ -1,10 +1,6 @@
-import { ConfigManager } from './config.manager';
-
 export class RequestManager {
-    private configManager: ConfigManager = new ConfigManager()
-
     public async thumbnail(thumb: string): Promise<any> {
-        let request = await fetch(this.configManager.config.thumbnail_url + thumb, {
+        let request = await fetch(window.config.getValue<string>('thumbnail_url') + thumb, {
             method: 'HEAD',
             mode: 'no-cors'
         });
@@ -12,7 +8,7 @@ export class RequestManager {
     }
 
     public async get(url: string, header: {}): Promise<any> {
-        let request = await fetch(this.configManager.config.api_url + url, {
+        let request = await fetch(window.config.getValue<string>('api_url') + url, {
             method: 'GET',
             mode: 'cors',
             headers: header
@@ -21,7 +17,7 @@ export class RequestManager {
     }
 
     public async post(url: string, header: {}, body: {}): Promise<any> {
-        let request = await fetch(this.configManager.config.api_url + url, {
+        let request = await fetch(window.config.getValue<string>('api_url') + url, {
             method: 'POST',
             mode: 'cors',
             headers: header,

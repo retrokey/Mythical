@@ -44,7 +44,7 @@ const profile = () => {
             }
             const result = await requestManager.thumbnail('1.png');
             if (result.ok) {
-                roomInfo.thumbnail = configManager.config.thumbnail_url + room.id + '.png';
+                roomInfo.thumbnail = window.config.getValue<string>('thumbnail_url') + room.id + '.png';
             }
             rooms.push(roomInfo);
         }

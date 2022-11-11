@@ -15,7 +15,7 @@ const staff = () => {
             staffs: new Map<string, Array<UserInfoDefinition>>()
         };
 
-        for (let [key, val] of Object.entries(configManager.config.ranks)) {
+        for (let [key, val] of window.config.getValue<Map<string, number>>('ranks').entries()) {
             let response: any = await requestManager.get('user/rank/' + val, {
                 'content-type': 'application/json',
                 'access-control-allow-origin': '*'
