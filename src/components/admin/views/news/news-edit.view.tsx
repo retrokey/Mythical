@@ -10,7 +10,6 @@ export const NewsEditView: FC<{  }> = props => {
     const news = getNewsLists().find(element => element.id == parseInt(sessionStorage.getItem('news')));
 
     useEffect(() => {
-        console.log(news);
         title('ADMIN: News Manager - Edit: ' + news.name);
     }, [  ]);
 
