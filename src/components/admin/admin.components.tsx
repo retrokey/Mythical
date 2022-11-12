@@ -4,6 +4,7 @@ import { NewsProvider } from '../../core/providers/news.provider';
 import { PageProvider } from '../../core/providers/page.provider';
 import { SessionProvider } from '../../core/providers/session.provider';
 import { DashboardView } from './views/dashboard.view';
+import { NewsEditView } from './views/news/news-edit.view';
 import { NewsListView } from './views/news/news-list.view';
 
 export const Admin: FC<{}> = props => {
@@ -27,11 +28,11 @@ export const Admin: FC<{}> = props => {
 
                     let json = response.data;
                     registerUser(json);
-                    change('dashboard');
+                    changeAdmin('dashboard');
                 });
             }
         } else {
-            change('dashboard');
+            changeAdmin('dashboard');
         }
     }, [  ]);
 
@@ -74,6 +75,7 @@ export const Admin: FC<{}> = props => {
             <div className="relative w-[calc(100%-200px)] h-auto p-[0.5rem] bg-white border-[1px] border-black">
                 { checkAdmin('dashboard') && <DashboardView /> }
                 { checkAdmin('news.list') && <NewsListView /> }
+                { checkAdmin('news.edit') && <NewsEditView /> }
             </div>
         </div>
     );

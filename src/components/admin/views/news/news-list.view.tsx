@@ -1,11 +1,10 @@
-import { timeStamp } from 'console';
 import { FC, ReactElement, useEffect, useMemo } from 'react';
 import { NewsProvider } from '../../../../core/providers/news.provider';
 import { PageProvider } from '../../../../core/providers/page.provider';
 import { SessionProvider } from '../../../../core/providers/session.provider';
 
 export const NewsListView: FC<{}> = props => {
-    const { title } = PageProvider();
+    const { changeAdmin, title } = PageProvider();
     const { getUser } = SessionProvider();
     const { getNewsLists } = NewsProvider();
 
@@ -17,11 +16,13 @@ export const NewsListView: FC<{}> = props => {
         const items: Array<ReactElement> = new Array<ReactElement>();
 
         for (let news of getNewsLists()) {
-            items.push(<tr key={news.id}>
+            items.push(<tr key={ news.id }>
                 <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{news.id}</td>
                 <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{news.name}</td>
                 <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{news.author}</td>
-                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">Edit | Delete</td>
+                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">
+                    <div className="cursor-pointer w-[50%]" onClick={ event => { changeAdmin('news.edit');sessionStorage.setItem('news', news.id.toString()) } }>Edit</div> | Delete
+                </td>
             </tr>);
         }
 
@@ -34,7 +35,7 @@ export const NewsListView: FC<{}> = props => {
                 <div className="bg-[#E2E2E0] border-[1px] border-black">
                     <div className="bg-[#334964] text-center text-[13px] font-inter text-white py-[3px]">News Manager - List</div>
                     <div className="p-[4px]">
-                        {getUser().permission.get('admin.news.list') &&
+                        { getUser().permission.get('admin.news.list') &&
                             <table className="w-full text-[12px]">
                                 <thead>
                                     <tr>
