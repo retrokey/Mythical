@@ -1,9 +1,9 @@
 {
     "name": "Mythical",
     "ranks": {
-        "fou": "7",
-        "adm": "6",
-        "mod": "5"
+        "fou": 7,
+        "adm": 6,
+        "mod": 5
     },
     "ranksName": {
         "fou": "Founders",

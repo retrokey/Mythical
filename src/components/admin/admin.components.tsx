@@ -1,5 +1,4 @@
 import { FC, useCallback, useEffect } from 'react';
-import { ConfigManager } from '../../core/manager/config.manager';
 import { RequestManager } from '../../core/manager/request.manager';
 import { NewsProvider } from '../../core/providers/news.provider';
 import { PageProvider } from '../../core/providers/page.provider';
