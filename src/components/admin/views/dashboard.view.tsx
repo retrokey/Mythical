@@ -16,32 +16,13 @@ export const DashboardView: FC<{}> = props => {
                     <div className="p-[4px]">
                         <table className="w-full text-[12px]">
                             <tbody>
-                                <tr className="border-[1px]">
+                                <tr>
                                     <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30">Mythical Version:</td>
                                     <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">{ window.config.mythical.version }</td>
                                 </tr>
-                                <tr className="">
+                                <tr>
                                     <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30">Author:</td>
                                     <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">{ window.config.mythical.author.name } <small>({ window.config.mythical.author.email })</small></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div className="w-[49%] h-auto mb-3">
-                <div className="bg-[#E2E2E0] border-[1px] border-black">
-                    <div className="bg-[#334964] text-center text-[13px] font-inter text-white py-[3px]">Hotel Information</div>
-                    <div className="p-[4px]">
-                        <table className="w-full text-[12px]">
-                            <tbody>
-                                <tr className="border-[1px]">
-                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30">Online Users:</td>
-                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">0</td>
-                                </tr>
-                                <tr className="">
-                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30">Room Loaded:</td>
-                                    <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-right">0</td>
                                 </tr>
                             </tbody>
                         </table>

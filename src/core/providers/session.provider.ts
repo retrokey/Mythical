@@ -22,7 +22,7 @@ const session = () => {
             },
             permission: null
         };
-        requestManager.get('user/permission', {
+        requestManager.get('user/permission/' + userSession.userInfo.rank, {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         })
@@ -34,13 +34,17 @@ const session = () => {
             let json = response.data;
             let permissionMap: Map<string, boolean> = new Map<string, boolean>();
             for (let permission of json.lists) {
-                permissionMap.set(permission.name, userSession.userInfo.rank >= permission.rankId ? true : false);
+                permissionMap.set(permission.name, true);
             }
             userSession.permission = permissionMap;
             setUserSession(userSession);
             setLogged(true);
             localStorage.setItem('session', userSession.token);
         });
+    }
+
+    const hasPermission = (permission: string) => {
+        return userSession.permission.has(permission);
     }
 
     const onRefresh = () => {
@@ -66,6 +70,6 @@ const session = () => {
         return logged;
     }
 
-    return { registerUser, onRefresh, removeUser, getUser, getLogged }
+    return { registerUser, hasPermission, onRefresh, removeUser, getUser, getLogged }
 }
 export const SessionProvider = () => useBetween(session);

@@ -6,7 +6,7 @@ import { SessionProvider } from '../../../../core/providers/session.provider';
 
 export const NewsListView: FC<{}> = props => {
     const { changeAdmin, title } = PageProvider();
-    const { getUser } = SessionProvider();
+    const { hasPermission } = SessionProvider();
     const { removeNews, getNewsLists } = NewsProvider();
     const [ newsList, setNewsList ] = useState<Array<NewsInfoDefinition>>(getNewsLists());
     const [ items, setitems ] = useState<Array<ReactElement>>(null);
@@ -33,9 +33,17 @@ export const NewsListView: FC<{}> = props => {
                 <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{ news.name }</td>
                 <td className="w-[10%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{ news.author }</td>
                 <td className="w-[35%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">
-                    <button onClick={ event => edit(news.id) } className="cursor-pointer underline color-black">Edit</button>
+                    { hasPermission('admin.news.edit') &&
+                    <button onClick={ event => edit(news.id) } className="underline color-black">Edit</button> }
+                    { !hasPermission('admin.news.edit') &&
+                    <button className="cursor-default underline color-black">Cannot edit</button> }
                     ||
-                    <button onClick={ event => remove(news) } className="cursor-pointer underline color-black">Delete</button>
+                    { hasPermission('admin.news.delete') &&
+                    <button onClick={ event => remove(news) } className="underline color-black">Delete</button>
+                    }
+                    { !hasPermission('admin.news.delete') &&
+                    <button className="cursor-default underline color-black">Cannot delete</button>
+                    }
                 </td>
             </tr>);
         }
@@ -48,7 +56,7 @@ export const NewsListView: FC<{}> = props => {
                 <div className="bg-[#E2E2E0] border-[1px] border-black">
                     <div className="bg-[#334964] text-center text-[13px] font-inter text-white py-[3px]">News Manager - List</div>
                     <div className="p-[4px]">
-                        { getUser().permission.get('admin.news.list') &&
+                        { hasPermission('admin.news.list') &&
                             <table className="w-full text-[12px]">
                                 <thead>
                                     <tr>

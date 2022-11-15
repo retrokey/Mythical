@@ -10,7 +10,7 @@ import { NewsListView } from './views/news/news-list.view';
 export const Admin: FC<{}> = props => {
     const requestManager: RequestManager = new RequestManager();
     const { title, changeAdmin, checkAdmin, changeSection } = PageProvider();
-    const { getUser, onRefresh, removeUser, registerUser } = SessionProvider();
+    const { getUser, onRefresh, removeUser, registerUser, hasPermission } = SessionProvider();
     const { setNewsLists } = NewsProvider();
 
     useEffect(() => {
@@ -46,7 +46,11 @@ export const Admin: FC<{}> = props => {
 
     if (!getUser()) {
         return (<p className="text-center text-white">Still loading</p>);
-    } 
+    }
+
+    if (!hasPermission('admin.login')) {
+        changeSection('generic');
+    }
 
     return (
         <div className="absolute pt-[35px] px-[1.5rem] w-full h-full bg-[#97b4d7] flex flex-row z-[3]">
@@ -55,15 +59,35 @@ export const Admin: FC<{}> = props => {
                     <li onClick={ event => change('dashboard') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
                         Dashboard
                     </li>
-                    { getUser().permission.get('admin.news') && 
-                    <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black"> 
+                    { hasPermission('admin.news') && 
+                    <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
                         News
                         <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
-                            { getUser().permission.get('admin.news.list') &&
+                            { hasPermission('admin.news.list') &&
                             <li onClick={ event => change('news.list') } className="cursor-pointer">
                                 List
                             </li>
                             }
+                            <li>Make New</li>
+                        </ul>
+                    </li>
+                    }
+                    { hasPermission('admin.user') &&
+                    <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
+                        Users
+                        <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
+                            <li>List</li>
+                            <li>Ranks Tool</li>
+                            <li>Clone Check</li>
+                            <li>Currency Tool</li>
+                        </ul>
+                    </li>
+                    }
+                    { hasPermission('admin.mythical') &&
+                    <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
+                        Mythical
+                        <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
+                            <li>Permission Manager</li>
                         </ul>
                     </li>
                     }
