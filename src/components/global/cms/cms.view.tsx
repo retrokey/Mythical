@@ -1,7 +1,7 @@
 import { FC, useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { PageProvider } from '../../../core/providers/page.provider';
 import { SessionProvider } from '../../../core/providers/session.provider';
+import { Admin } from '../../admin/admin.components';
 import { NavigationView } from './navigation/navigation.view';
 import { NewsView } from './news/news.view';
 import { NitroView } from './nitro/nitro.view';
@@ -10,7 +10,7 @@ import { SettingsView } from './settings/settings.view';
 import { StaffView } from './staff/staff.view';
 
 export const CMSView: FC<{  }> = props => {
-    const { check, title, changeSection } = PageProvider();
+    const { check, title, changeSection, checkSection } = PageProvider();
     const { getUser, removeUser } = SessionProvider();
     const mythical = useRef<HTMLDivElement>();
 
@@ -36,6 +36,7 @@ export const CMSView: FC<{  }> = props => {
         { check('staff') && <StaffView /> }
         { check('news') && <NewsView /> }
         { check('settings') && <SettingsView mythical={ mythical } /> }
+        { checkSection('admin') && <Admin /> }
         <NitroView />
     </div>
     );

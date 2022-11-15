@@ -687,6 +687,10 @@ video {
   left: 290px;
 }
 
+.z-\[3\] {
+  z-index: 3;
+}
+
 .z-\[2\] {
   z-index: 2;
 }
@@ -703,12 +707,12 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.mt-auto {
-  margin-top: auto;
-}
-
 .mb-\[5px\] {
   margin-bottom: 5px;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .flex {
@@ -939,12 +943,12 @@ video {
   width: 415px;
 }
 
-.w-\[5\%\] {
-  width: 5%;
-}
-
 .w-\[100\%\] {
   width: 100%;
+}
+
+.w-\[5\%\] {
+  width: 5%;
 }
 
 .w-\[35\%\] {
@@ -1136,12 +1140,12 @@ video {
   border-radius: 8px;
 }
 
-.rounded-\[100px\] {
-  border-radius: 100px;
-}
-
 .rounded-\[3px\] {
   border-radius: 3px;
+}
+
+.rounded-\[100px\] {
+  border-radius: 100px;
 }
 
 .rounded-r-\[10px\] {
@@ -1236,6 +1240,11 @@ video {
   background-color: rgb(255 196 57 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#FFC439\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 196 57 / var(--tw-bg-opacity));
+}
+
 .bg-not0 {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
@@ -1256,9 +1265,9 @@ video {
   background-color: rgb(255 150 150 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#FFC439\] {
+.bg-\[\#97b4d7\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 196 57 / var(--tw-bg-opacity));
+  background-color: rgb(151 180 215 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-75 {
@@ -1377,6 +1386,10 @@ video {
   padding: 0.75rem;
 }
 
+.p-\[2px\] {
+  padding: 2px;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -1387,10 +1400,6 @@ video {
 
 .p-\[20px\] {
   padding: 20px;
-}
-
-.p-\[2px\] {
-  padding: 2px;
 }
 
 .px-\[1\.5rem\] {
@@ -1446,6 +1455,10 @@ video {
   font-size: 12px;
 }
 
+.text-\[11px\] {
+  font-size: 11px;
+}
+
 .text-\[15px\] {
   font-size: 15px;
 }
@@ -1464,10 +1477,6 @@ video {
 
 .text-\[26px\] {
   font-size: 26px;
-}
-
-.text-\[11px\] {
-  font-size: 11px;
 }
 
 .font-semibold {
@@ -1528,6 +1537,11 @@ video {
   color: rgb(39 39 42 / var(--tw-text-opacity));
 }
 
+.text-\[\#334964\] {
+  --tw-text-opacity: 1;
+  color: rgb(51 73 100 / var(--tw-text-opacity));
+}
+
 .text-count-light {
   --tw-text-opacity: 1;
   color: rgb(247 247 247 / var(--tw-text-opacity));
@@ -1546,11 +1560,6 @@ video {
 .text-diamonds {
   --tw-text-opacity: 1;
   color: rgb(74 167 143 / var(--tw-text-opacity));
-}
-
-.text-\[\#334964\] {
-  --tw-text-opacity: 1;
-  color: rgb(51 73 100 / var(--tw-text-opacity));
 }
 
 .text-opacity-80 {

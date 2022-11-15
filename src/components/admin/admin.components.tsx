@@ -9,7 +9,7 @@ import { NewsListView } from './views/news/news-list.view';
 
 export const Admin: FC<{}> = props => {
     const requestManager: RequestManager = new RequestManager();
-    const { changeAdmin, checkAdmin, changeSection } = PageProvider();
+    const { title, changeAdmin, checkAdmin, changeSection } = PageProvider();
     const { getUser, onRefresh, removeUser, registerUser } = SessionProvider();
     const { setNewsLists } = NewsProvider();
 
@@ -49,7 +49,7 @@ export const Admin: FC<{}> = props => {
     } 
 
     return (
-        <div className="absolute pt-[35px] px-[1.5rem] w-full flex flex-row">
+        <div className="absolute pt-[35px] px-[1.5rem] w-full h-full bg-[#97b4d7] flex flex-row z-[3]">
             <div className="relative w-[200px] h-auto">
                 <ul className="bg-[#E2E2E0] p-0">
                     <li onClick={ event => change('dashboard') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
@@ -67,7 +67,7 @@ export const Admin: FC<{}> = props => {
                         </ul>
                     </li>
                     }
-                    <li onClick={ event => changeSection('generic') } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-black text-black">
+                    <li onClick={ event => { title('Nitro'); changeSection('generic') } } className="cursor-pointer text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-black text-black">
                         Return to { window.config.getValue('name') }
                     </li>
                 </ul>
