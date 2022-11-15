@@ -9,7 +9,7 @@ const news = () => {
     const [ newsList, setNewsList ] = useState<Array<NewsInfoDefinition>>(new Array<NewsInfoDefinition>());
 
     const removeNews = async (news: NewsInfoDefinition) => {
-        await requestManager.get('news/remove/' + news.id, {
+        await requestManager.delete('news/remove/' + news.id, {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         });

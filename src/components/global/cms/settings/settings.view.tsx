@@ -104,7 +104,7 @@ export const SettingsView: FC<SettingsProps> = props => {
             break;
         }
 
-        requestManager.post('user/settings/' + getUser().userInfo.id + '/update', {
+        requestManager.put('user/settings/' + getUser().userInfo.id + '/update', {
             'content-type': 'application/json',
             'access-control-allow-origin': '*'
         }, body);

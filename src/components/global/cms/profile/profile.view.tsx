@@ -63,10 +63,12 @@ export const ProfileView: FC<{  }> = props => {
         }
 
         if (event.key == 'Backspace') {
-            setProfile(getUser().userInfo.username)
-            .then(() => {
-                title('Profile of ' + getUser().userInfo.username);
-            });
+            if (username.current.value.length == 0) {
+                setProfile(getUser().userInfo.username)
+                .then(() => {
+                    title('Profile of ' + getUser().userInfo.username);
+                });
+            }
         }
     }, [ setProfile ]);
 
