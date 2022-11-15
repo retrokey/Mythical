@@ -68,7 +68,9 @@ export const Admin: FC<{}> = props => {
                                 List
                             </li>
                             }
+                            { hasPermission('admin.news.new') &&
                             <li>Make New</li>
+                            }
                         </ul>
                     </li>
                     }
@@ -76,18 +78,29 @@ export const Admin: FC<{}> = props => {
                     <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
                         Users
                         <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
+                            { hasPermission('admin.user.list') &&
                             <li>List</li>
+                            }
+                            { hasPermission('admin.user.ranks') &&
                             <li>Ranks Tool</li>
+                            }
+                            { hasPermission('admin.user.clone') &&
                             <li>Clone Check</li>
+                            }
+                            { hasPermission('admin.user.currency') &&
                             <li>Currency Tool</li>
+                            }
                         </ul>
                     </li>
                     }
                     { hasPermission('admin.mythical') &&
                     <li className="text-[13px] font-inter py-[4px] px-[5px] border-[1px] border-b-0 border-black text-black">
                         Mythical
+                        
                         <ul className="pl-[20px] text-[13px] font-inter px-[5px] text-black">
+                            { hasPermission('admin.mythical.permission') &&
                             <li>Permission Manager</li>
+                            }
                         </ul>
                     </li>
                     }
@@ -96,10 +109,16 @@ export const Admin: FC<{}> = props => {
                     </li>
                 </ul>
             </div>
-            <div className="relative w-[calc(100%-200px)] h-auto p-[0.5rem] bg-white border-[1px] border-black">
-                { checkAdmin('dashboard') && <DashboardView /> }
-                { checkAdmin('news.list') && <NewsListView /> }
-                { checkAdmin('news.edit') && <NewsEditView /> }
+            <div className="w-full flex flex-col">
+                <div className="flex justify-between items-center relative w-full h-[25px] border-[1px] border-black p-[3px 10px] bg-[#385d88]">
+                    <span className="left-5 relative text-[13px] text-white">{ window.config.getValue('name') } Housekeeping</span>
+                    <span className="right-5 relative text-[13px] text-white">Welcome back, <b>{ getUser().userInfo.username }</b>!</span>
+                </div>
+                <div className="relative w-full h-auto p-[0.5rem] bg-white border-[1px] border-black">
+                    { checkAdmin('dashboard') && <DashboardView /> }
+                    { checkAdmin('news.list') && <NewsListView /> }
+                    { checkAdmin('news.edit') && <NewsEditView /> }
+                </div>
             </div>
         </div>
     );
