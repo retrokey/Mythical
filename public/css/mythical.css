@@ -687,6 +687,10 @@ video {
   left: 290px;
 }
 
+.left-\[50\%\] {
+  left: 50%;
+}
+
 .z-\[3\] {
   z-index: 3;
 }
@@ -715,12 +719,24 @@ video {
   margin-top: auto;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
 
 .table {
   display: table;
+}
+
+.grid {
+  display: grid;
 }
 
 .hidden {
@@ -1091,6 +1107,26 @@ video {
   width: 12px;
 }
 
+.w-\[30\%\] {
+  width: 30%;
+}
+
+.w-\[\%\] {
+  width: %;
+}
+
+.w-\[20px\%\] {
+  width: 20px%;
+}
+
+.w-\[120px\] {
+  width: 120px;
+}
+
+.w-\[90px\] {
+  width: 90px;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -1100,12 +1136,20 @@ video {
           user-select: none;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .flex-row {
   flex-direction: row;
 }
 
 .flex-col {
   flex-direction: column;
+}
+
+.content-center {
+  align-content: center;
 }
 
 .items-center {
@@ -1270,6 +1314,10 @@ video {
   background-color: rgb(151 180 215 / var(--tw-bg-opacity));
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }
@@ -1427,6 +1475,11 @@ video {
   padding-right: 7px;
 }
 
+.py-\[5px\] {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .pt-\[35px\] {
   padding-top: 35px;
 }
@@ -1570,6 +1623,10 @@ video {
   --tw-text-opacity: 0.9;
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
 .shadow-dc {
   --tw-shadow: inset -1px -1px #5a556a;
   --tw-shadow-colored: inset -1px -1px var(--tw-shadow-color);
@@ -1585,6 +1642,11 @@ video {
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.filter {
+  -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .backdrop-blur-\[5px\] {

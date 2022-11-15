@@ -1,4 +1,5 @@
-import { FC, ReactElement, useEffect, useMemo } from 'react';
+import { FC, ReactElement, useCallback, useEffect, useState } from 'react';
+import { NewsInfoDefinition } from '../../../../core/definitions/news-info.definition';
 import { NewsProvider } from '../../../../core/providers/news.provider';
 import { PageProvider } from '../../../../core/providers/page.provider';
 import { SessionProvider } from '../../../../core/providers/session.provider';
@@ -6,28 +7,40 @@ import { SessionProvider } from '../../../../core/providers/session.provider';
 export const NewsListView: FC<{}> = props => {
     const { changeAdmin, title } = PageProvider();
     const { getUser } = SessionProvider();
-    const { getNewsLists } = NewsProvider();
+    const { removeNews, getNewsLists } = NewsProvider();
+    const [ newsList, setNewsList ] = useState<Array<NewsInfoDefinition>>(getNewsLists());
+    const [ items, setitems ] = useState<Array<ReactElement>>(null);
 
     useEffect(() => {
         title('ADMIN: News Manager - List');
     }, [  ]);
 
-    const newsList = useMemo(() => {
-        const items: Array<ReactElement> = new Array<ReactElement>();
+    const edit = useCallback((id: number) => {
+        sessionStorage.setItem('news', id.toString())
+        changeAdmin('news.edit');
+    }, [ changeAdmin ]);
 
-        for (let news of getNewsLists()) {
+    const remove = useCallback((news: NewsInfoDefinition) => {
+        setNewsList(getNewsLists().filter(element => element.id != news.id));
+        removeNews(news);
+    }, [ setNewsList, getNewsLists ]);
+
+    useEffect(() => {
+        const items: Array<ReactElement> = new Array<ReactElement>();
+        for (let news of newsList) {
             items.push(<tr key={ news.id }>
-                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{news.id}</td>
-                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{news.name}</td>
-                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{news.author}</td>
-                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">
-                    <div className="cursor-pointer w-[50%]" onClick={ event => { changeAdmin('news.edit');sessionStorage.setItem('news', news.id.toString()) } }>Edit</div> | Delete
+                <td className="w-[5%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{ news.id }</td>
+                <td className="w-[50%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{ news.name }</td>
+                <td className="w-[10%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">{ news.author }</td>
+                <td className="w-[35%] py-[4px] px-[7px] border-[1px] border-black border-opacity-30 text-center">
+                    <button onClick={ event => edit(news.id) } className="cursor-pointer underline color-black">Edit</button>
+                    ||
+                    <button onClick={ event => remove(news) } className="cursor-pointer underline color-black">Delete</button>
                 </td>
             </tr>);
         }
-
-        return items;
-    }, [ getNewsLists ]);
+        setitems(items);
+    }, [ newsList ]);
 
     return (
         <div className="w-[100%] h-auto mb-3 col-span-1">
@@ -46,7 +59,7 @@ export const NewsListView: FC<{}> = props => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    { newsList }
+                                    { items }
                                 </tbody>
                             </table>
                         }
